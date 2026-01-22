@@ -1,0 +1,89 @@
+<view class="page-container">
+  <!-- 顶部标题栏 -->
+  <view class="title-bar">
+    <text class="title-text">我的毕设小程序</text>
+    <view class="title-decoration"></view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider"></view>
+
+  <!-- 个人信息卡片 -->
+  <view class="info-card">
+    <image src="/image/头像.jpg" class="TouXiang" mode="aspectFill"/>
+    <view class="info-content">
+      <text class="RHK">任洪轲</text>
+      <text class="desc">2004年 · 电子科学与技术</text>
+      <view class="info-tags">
+        <text class="tag-item">半程马拉松大众二级</text>
+        <text class="tag-item">半马PB:1小时36分10秒</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分割线 -->
+  <view class="divider"></view>
+
+  <!-- 核心内容容器 -->
+  <view class="Conter">
+    <view class="decor-left"></view>
+    <view class="box-text-wrap">
+      <text class="content-text">
+        任洪轲
+        22061202420
+        电子科学与技术
+      </text>
+    </view>
+    <view class="decor-right"></view>
+    <view class="decor-tag"> </view>
+  </view>
+
+  <!-- 数据统计模块 -->
+  <view class="stats-container">
+    <view class="stats-item">
+      <view class="stats-icon temperature"></view>
+      <text class="stats-num">{{Temp}}℃</text>
+      <text class="stats-text">温度</text>
+    </view>
+    <view class="stats-item">
+      <view class="stats-icon humidity"></view>
+      <text class="stats-num">{{Hum}}%</text>
+      <text class="stats-text">湿度</text>
+    </view>
+    <view class="stats-item">
+      <view class="stats-icon pressure"></view>
+      <text class="stats-num">{{Qiya}}Pa</text>
+      <text class="stats-text">气压</text>
+    </view>
+  </view>
+
+  <!-- LED开关 -->
+  <view class="switch-wrap">
+    <text class="switch-text">工作控制开关</text>
+    <switch class="LED_Zong" bindchange="Onenet_SetAlarmInfo" color="#00cc66"/>
+  </view>
+
+  <!-- 功能按钮组 -->
+  <view class="btn-group">
+    <button type="primary" size="mini" class="custom-btn">任</button>
+    <button type="default" size="mini" class="custom-btn default-btn">洪</button>
+    <button type="warn" size="mini" class="custom-btn warn-btn">轲</button>
+  </view>
+
+  <!-- 底部信息 -->
+  <view class="footer">
+    <text class="footer-text">2026年1月21号上传第2版</text>
+  </view>
+
+  <view class="verify-input-wrap">
+    <input 
+      class="verify-input" 
+      placeholder="输入密码跳转" 
+      placeholder-class="input-placeholder"
+      bindinput="onInputChange"  
+      maxlength="3" 
+      type="number"  
+      value="{{verifyCode}}" 
+    />
+  </view>
+</view>

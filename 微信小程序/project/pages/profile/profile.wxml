@@ -1,0 +1,223 @@
+<view class="timeline-container">
+  <!-- 页面标题 -->
+  <view class="timeline-title">
+    <text class="title-text">纵有疾风起，人生不言弃</text>
+  </view>
+
+  <!-- 时间流水线主体（可滚动） -->
+  <scroll-view class="timeline-scroll" scroll-y="true" enhanced="true" show-scrollbar="true">
+    <!-- 时间线容器 -->
+    <view class="timeline-wrap">
+      <!-- 节点1 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/1.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2023/9/7</text>
+            <text class="text-desc">暑假提前返校，备战数学建模。9月7号开始比赛，三天三夜，通宵调代码。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点2 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/2.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2023/9/15</text>
+            <text class="text-desc">第一次自发跑步，6分配跑完600米都累的头晕眼花的，跑步这块确实没什么天赋</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点3 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/3.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/3/14</text>
+            <text class="text-desc">第一次跑下来10公里，1小时左右。后面慢慢开始堆有氧跑量</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点4 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/4.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/3/28</text>
+            <text class="text-desc">10公里迈入50分钟门槛，正式打开五分配</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点5 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/5.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/4/5</text>
+            <text class="text-desc">校园跑，跑走结合，第一次在操场完成半马，跑完脸上全是盐结晶。腿也是各种抽筋，跑完之后好几天都是一瘸一拐的。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点6 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/6.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/5/12</text>
+            <text class="text-desc">奎文半程马拉松。懵懵懂懂报名了半程马拉松，15公里后配速掉到5分40，后面几公里还有坡，累的想死，跑完说再也不报名了，殊不知这才是刚开始，哈哈哈😋</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点7 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/7.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/7/29</text>
+            <text class="text-desc">暑假留校干电赛，四天三夜，其实山东是七天七夜，宇树学长狠狠发力，也是学了很多，一夜生六奖。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点8 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/8.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/10/10</text>
+            <text class="text-desc">半马打开140，这段时间开始哐哐提配速，但是伤病也慢慢开始来了。</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点9 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/9.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2024/10/20</text>
+            <text class="text-desc">潍坊马拉松，参加的第一场A1级别马拉松，也是期待已久。氛围、保障、志愿者简直没话说，虽然跑的累，但是确实爽</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点10 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/10.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/4/6</text>
+            <text class="text-desc">风筝公园半程马，绕山4周半，第一次跑这么大爬升，给哥们干成越野跑了，跑完膝盖脚踝关节积攒的各种伤病都来了，后面停跑了半个多月😥</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点11 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/11.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/5/2</text>
+            <text class="text-desc">昌邑半程马拉松，有点风，不过赛道确实棒，赛道体验感甚至比潍坊马都好，但是之前伤病导致跑量太少，跑下来体感很累，后程配速掉到5分半，心率也上不去，可惜了这么棒的赛道</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点12 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/12.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/7/30</text>
+            <text class="text-desc">25年电赛，赛前几天莫名其妙成了主力，7天7夜，暑假赛中的时候学校停电被迫搬实验室，不断改方案，通宵调代码，炒饼天天吃，最后的3天只睡了7个小时，真是拼尽全力也无法战胜，去了比赛场地才知道什么是天下英雄如过江之鲫，不过好在最后3个省二，也算是有个结果，没白干一场👍</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点13 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/13.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/9/21</text>
+            <text class="text-desc">光明半程马，本来打算当成潍坊马前的一场普通练习，赛前状态也不错，但是崩到了两个小时开外，信心受挫，跑完第二天髂胫束开始疼，导致进入10月后基本没法跑步</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点14 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/14.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/10/19</text>
+            <text class="text-desc">25潍坊马，A1赛事报名早，期待了很久，但是光明马后伤到髂胫束，导致10月份跑量只有28公里，本来都打算退赛了，但是不甘心，给自己做了很多心理建设，最后云南白药、按摩膏、布洛芬止疼药全都用上，也不知道是两年的跑量积累，还是潍坊马的氛围，竟然顺利完赛了，成绩还不错（甚至前后10公里负分割配速），跑完真是感动好久，舍不得离开场地，还拍了很多照片😁</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 节点15 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/15.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2025/12/20</text>
+            <text class="text-desc">2026考研初试，其实满打满算就认真学了小半年，数学压了最多的时间，跑步跑的太多了，哈哈哈</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 新增：节点16 -->
+      <view class="timeline-node">
+        <view class="node-dot"></view>
+        <view class="node-content">
+          <image src="/image/16.jpg" class="node-img" mode="aspectFill"/>
+          <view class="node-text">
+            <text class="text-title">2026/1/1</text>
+            <text class="text-desc">潍坊元旦迎新跑，考完研的第一场。耐寒体质，温度越低表现越好。</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 总结框（内含大图片） -->
+  <view class="summary-box">
+    <view class="summary-title">
+      <text></text>
+    </view>
+    <view class="summary-content">
+      大学四年马上就要结束，这几年体验了很多东西，也算比较充实，但是还是有很多遗憾，两年电赛不能弥补智能车的空缺，拼尽全力也没有机会进入综合测评，最后只能止步于省二。三千左右的跑量虽然积累了一些小的伤病，但是现在每次跑步前还仍然带有一些期待。考研的那个时候最期待的就是晚上能回去跑跑步，如果没有跑步的话考研后期也就没什么动力了。不知道是喜欢马拉松还是喜欢跑步，也可能两个都喜欢，希望以后能一直跑下去，远离伤病🙃🙃🙃。
+    </view>
+    <!-- 新增：总结框下方的大图片 -->
+    <view class="summary-img-wrap">
+      <image src="/image/17.jpg" class="summary-img" mode="aspectFill"/>
+    </view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn-wrap">
+    <button class="back-btn" bindtap="goback">return</button>
+  </view>
+</view>
