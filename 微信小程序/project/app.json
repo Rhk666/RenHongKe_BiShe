@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index" ,
+    "pages/profile/profile" 
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText":" "
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

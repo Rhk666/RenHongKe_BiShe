@@ -1,0 +1,500 @@
+/* 全局样式重置与基础配置 - 改为绿色渐变背景 */
+page {
+  background: linear-gradient(180deg, #f0fff8 0%, #e8f8ef 100%);
+  font-family: PingFang SC, Microsoft YaHei, sans-serif;
+  line-height: 1.5;
+}
+
+/* 页面容器 - 核心：垂直均匀分布，占满屏幕高度 */
+.page-container {
+  padding: 20rpx 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 750rpx;
+  margin: 0 auto;
+  min-height: 100vh; /* 占满屏幕高度 */
+  box-sizing: border-box;
+  justify-content: space-evenly; /* 垂直方向均匀分布模块 */
+  gap: 8rpx; /* 模块间最小间距，防止过散 */
+}
+
+/* 1. 顶部标题栏 - 改为绿色系 */
+.title-bar {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 8rpx;
+  position: relative;
+}
+
+.title-text {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1e293b;
+  white-space: nowrap;
+  letter-spacing: 2rpx;
+  position: relative;
+  display: inline-block;
+}
+
+.title-text::after {
+  content: "";
+  position: absolute;
+  bottom: -10rpx;
+  left: 10%;
+  width: 80%;
+  height: 5rpx;
+  /* 改为绿色渐变 */
+  background: linear-gradient(90deg, #00cc66, #33dd88);
+  border-radius: 3rpx;
+}
+
+.title-decoration {
+  position: absolute;
+  top: 50%;
+  left: 20rpx;
+  width: 14rpx;
+  height: 14rpx;
+  /* 改为绿色 */
+  background-color: #00cc66;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  /* 绿色发光阴影 */
+  box-shadow: 0 0 10rpx rgba(0, 204, 102, 0.4);
+}
+
+.title-decoration::after {
+  content: "";
+  position: absolute;
+  right: -25rpx;
+  top: 50%;
+  width: 7rpx;
+  height: 7rpx;
+  /* 浅绿 */
+  background-color: #33dd88;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+/* 2. 分割线 - 适中间距 */
+.divider {
+  width: 90%;
+  height: 2rpx;
+  /* 绿色分割线 */
+  background: linear-gradient(90deg, transparent, #b8e6cf, transparent);
+  margin: 16rpx 0;
+  border-radius: 1rpx;
+}
+
+/* 3. 个人信息卡片 - 绿色系适配 */
+.info-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22rpx;
+  padding: 26rpx 28rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.8);
+}
+
+.TouXiang {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 5rpx solid #ffffff;
+  /* 绿色阴影 */
+  box-shadow: 0 5rpx 14rpx rgba(0, 204, 102, 0.15);
+  transition: all 0.3s ease;
+}
+
+.info-content {
+  margin-left: 20rpx;
+  flex: 1;
+}
+
+.RHK {
+  display: block;
+  font-size: 36rpx;
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: 2rpx;
+  margin-bottom: 10rpx;
+}
+
+.desc {
+  font-size: 24rpx;
+  color: #64748b;
+  margin-bottom: 14rpx;
+  line-height: 1.3;
+}
+
+.info-tags {
+  display: flex;
+  gap: 10rpx;
+  flex-wrap: wrap;
+}
+
+.tag-item {
+  font-size: 21rpx;
+  /* 绿色文字 */
+  color: #00cc66;
+  background-color: rgba(0, 204, 102, 0.08);
+  padding: 7rpx 14rpx;
+  border-radius: 18rpx;
+  border: 1rpx solid rgba(0, 204, 102, 0.15);
+  transition: all 0.2s ease;
+}
+
+/* 4. 核心内容容器 - 绿色渐变背景 */
+.Conter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 680rpx;
+  height: 350rpx; /* 适中高度 */
+  /* 改为绿色渐变 */
+  background: linear-gradient(135deg, #e8fff2, #d6f8e6);
+  border-radius: 28rpx;
+  box-shadow: 
+    0 8rpx 20rpx rgba(0, 204, 102, 0.1),
+    0 3rpx 8rpx rgba(0, 204, 102, 0.08),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.9);
+  padding: 40rpx 30rpx;
+  transform: perspective(1000rpx) translateY(0);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.Conter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 1.5s ease;
+}
+
+.Conter:hover::before {
+  transform: translateX(100%);
+}
+
+.Conter:active {
+  transform: perspective(1000rpx) translateY(4rpx);
+  box-shadow: 
+    0 6rpx 20rpx rgba(0, 204, 102, 0.08),
+    0 2rpx 8rpx rgba(0, 204, 102, 0.06),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.9);
+}
+
+.box-text-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "PingFang SC", "Microsoft YaHei", "Ma Shan Zheng", sans-serif;
+  z-index: 1;
+}
+
+.content-text {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 75rpx;
+  letter-spacing: 3rpx;
+  white-space: pre-line;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.06);
+  /* 绿色描边 */
+  -webkit-text-stroke: 0.8rpx rgba(0, 204, 102, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.content-text:hover {
+  transform: scale(1.05);
+  /* 绿色文字 */
+  color: #00cc66;
+}
+
+/* 装饰元素 - 绿色系 */
+.decor-left, .decor-right {
+  width: 35rpx;
+  height: 150rpx;
+  /* 绿色渐变 */
+  background: linear-gradient(180deg, #00cc66, #33dd88);
+  opacity: 0.15;
+  border-radius: 18rpx;
+  margin: 0 18rpx;
+}
+
+.decor-left {
+  transform: skewX(-15deg);
+}
+
+.decor-right {
+  transform: skewX(15deg);
+}
+
+.decor-tag {
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  font-size: 21rpx;
+  /* 绿色文字 */
+  color: #00cc66;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 9rpx 18rpx;
+  border-radius: 18rpx;
+  font-weight: 500;
+  box-shadow: 0 3rpx 6rpx rgba(0, 204, 102, 0.1);
+}
+
+/* 5. 数据统计模块 - 绿色系 */
+.stats-container {
+  width: 100%;
+  max-width: 600rpx;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 22rpx;
+  padding: 22rpx 0;
+  box-shadow: 0 6rpx 16rpx rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.8);
+}
+
+.stats-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 9rpx 18rpx;
+  border-radius: 14rpx;
+  transition: all 0.3s ease;
+}
+
+.stats-item:hover {
+  /* 绿色背景 */
+  background-color: rgba(0, 204, 102, 0.05);
+  transform: translateY(-4rpx);
+}
+
+.stats-icon {
+  width: 42rpx;
+  height: 42rpx;
+  margin-bottom: 10rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.temperature {
+  /* 浅红改浅绿 */
+  background-color: rgba(0, 204, 102, 0.1);
+}
+
+.temperature::after {
+  content: "🌡️";
+  font-size: 25rpx;
+}
+
+.humidity {
+  /* 蓝色改绿色 */
+  background-color: rgba(0, 204, 102, 0.1);
+}
+
+.humidity::after {
+  content: "💧";
+  font-size: 25rpx;
+}
+
+.pressure {
+  /* 橙色改浅绿 */
+  background-color: rgba(0, 204, 102, 0.1);
+}
+
+.pressure::after {
+  content: "🔍";
+  font-size: 25rpx;
+}
+
+.stats-num {
+  font-size: 36rpx;
+  font-weight: 700;
+  /* 绿色数字 */
+  color: #00cc66;
+  margin-bottom: 7rpx;
+  letter-spacing: 1rpx;
+}
+
+.stats-text {
+  font-size: 24rpx;
+  color: #64748b;
+}
+
+/* 6. 开关容器 - 绿色开关 */
+.switch-wrap {
+  width: 90%;
+  max-width: 600rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18rpx;
+  padding: 18rpx 26rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  border: 1rpx solid rgba(0, 204, 102, 0.2);
+}
+
+.switch-text {
+  font-size: 26rpx;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.LED_Zong {
+  transform: scale(1.3);
+  /* 开关颜色改为绿色 */
+  color: #00cc66;
+}
+
+/* 7. 功能按钮组 - 绿色系适配 */
+.btn-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 16rpx 0 20rpx;
+}
+
+.custom-btn {
+  padding: 0 42rpx;
+  border-radius: 33rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  /* 绿色阴影 */
+  box-shadow: 0 4rpx 8rpx rgba(0, 204, 102, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 74rpx;
+  line-height: 74rpx;
+}
+
+.custom-btn:hover {
+  transform: translateY(-4rpx);
+  /* 绿色阴影增强 */
+  box-shadow: 0 8rpx 16rpx rgba(0, 204, 102, 0.25);
+}
+
+.custom-btn:active {
+  transform: scale(0.96);
+}
+
+/* 主按钮改为绿色 */
+button[type="primary"].custom-btn {
+  background-color: #00cc66;
+  border: none;
+}
+button[type="primary"].custom-btn:active {
+  background-color: #00b359;
+}
+
+.default-btn {
+  background-color: #ffffff;
+  color: #1e293b;
+  border: 2rpx solid #e2e8f0;
+}
+
+.default-btn:active {
+  background-color: #f8fafc;
+}
+
+.warn-btn {
+  background-color: #ef4444;
+}
+
+.warn-btn:active {
+  background-color: #dc2626;
+}
+
+/* 8. 底部信息 - 适中间距 */
+.footer {
+  padding: 18rpx 0 10rpx;
+  border-top: 2rpx solid rgba(184, 230, 207, 0.3);
+  width: 100%;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 21rpx;
+  color: #94a3b8;
+  letter-spacing: 1rpx;
+}
+
+/* 新增：跳转按钮样式 */
+.nav-btn-wrap {
+  width: 100%;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-btn {
+  padding: 15rpx 60rpx;
+  background: linear-gradient(90deg, #00cc66, #33dd88);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 40rpx;
+  border: none;
+  box-shadow: 0 6rpx 12rpx rgba(0, 204, 102, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-3rpx);
+  box-shadow: 0 8rpx 16rpx rgba(0, 204, 102, 0.3);
+}
+
+.nav-btn:active {
+  transform: scale(0.98);
+  background: linear-gradient(90deg, #00b359, #2acc7a);
+}
+/* 原有所有样式保持不变 */
+
+/* 仅保留输入框容器样式（无按钮，居中显示） */
+.verify-input-wrap {
+  width: 100%;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+/* 小巧输入框样式（绿色主题） */
+.verify-input {
+  width: 180rpx;  /* 窄款小巧 */
+  height: 60rpx;  /* 矮款小巧 */
+  background: rgba(255, 255, 255, 0.95);
+  border: 2rpx solid #00cc66;  /* 绿色边框 */
+  border-radius: 30rpx;  /* 圆角更协调 */
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  text-align: center;  /* 输入内容居中 */
+  box-shadow: 0 3rpx 8rpx rgba(0, 204, 102, 0.15);
+  outline: none; /* 去除默认高亮 */
+}
+
+/* 输入框占位符样式 */
+.input-placeholder {
+  color: #b8e6cf;  /* 浅绿色占位符，贴合主题 */
+  font-size: 22rpx;
+}
