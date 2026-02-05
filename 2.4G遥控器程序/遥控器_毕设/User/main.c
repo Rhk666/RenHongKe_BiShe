@@ -16,7 +16,7 @@ Buffer[11]帧尾      0xa5
 #include "Delay.h"
 #include "OLED.h"
 #include "NRF24L01.h"
-
+#include "math.h"
 #include "key.h"
 #include "ADC.h"
 #include "WS2812B.h"
@@ -89,31 +89,10 @@ int main(void)
 	
 	while (1)
 	{
-//	Set_Color_On_Array(0,purple6);
-//	Set_Color_On_Array(1,purple4);	
-//	Set_Color_On_Array(2,purple2);
-//	Set_Color_On_Array(3,purple0);	
-//	
-//		Send_ALL_LED_Array();
-//		Send(SendBuf);
 		if(firstflag==0){
 		firstflag=1;
 		GPIO_WriteBit(GPIOA,GPIO_Pin_8,0);
 		}
-//		OLED_ShowHexNum(2,1,SendBuf[1],2);
-//		OLED_ShowHexNum(2,4,SendBuf[2],2);
-//		OLED_ShowHexNum(2,7,SendBuf[3],2);
-//		OLED_ShowHexNum(2,10,SendBuf[4],2);
-//		OLED_ShowHexNum(2,13,SendBuf[5],2);
-//		OLED_ShowHexNum(3,1,SendBuf[6],2);
-//		OLED_ShowHexNum(3,4,SendBuf[7],2);
-//		OLED_ShowHexNum(3,7,SendBuf[8],2);
-//		OLED_ShowHexNum(3,10,SendBuf[9],2);
-//		OLED_ShowHexNum(3,13,SendBuf[10],2);
-//		OLED_ShowHexNum(4,1,SendBuf[11],2);
-//		OLED_ShowHexNum(4,4,SendBuf[12],2);
-//		OLED_ShowHexNum(4,7,SendBuf[13],2);
-//		OLED_ShowHexNum(4,10,SendBuf[14],2);
 		yg111=AD_GetVal(ADC_Channel_0)/256;
 		yg112=AD_GetVal(ADC_Channel_0)%256;
 		ADzhi11=yg111*256+yg112;
@@ -193,7 +172,6 @@ int main(void)
 		OLED_ShowString(3,15,".");
 		OLED_ShowNum(3,16,NRF24L01_RxPacket[0]%10,1);
 		runcnt++;
-//		suijishu[suijishuzucount]=
 	}
 }
 void TIM2_IRQHandler(void)
@@ -201,51 +179,51 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
 		mycountLED++;
-		if(mycountLED%250==0){
-			if(suiji==1){
-			suiji=0;
-		suijishu[suijishuzucount]=ADzhi21%10;
-			suijishuzucount++;
-			if(suijishuzucount>=4){
-			suijishuzucount=0;
-			}
-//			ceshijishu[suijishu[suijishuzucount]]++;
+//		if(mycountLED%250==0){
+//			if(suiji==1){
+//			suiji=0;
+//		suijishu[suijishuzucount]=ADzhi21%10;
+//			suijishuzucount++;
+//			if(suijishuzucount>=4){
+//			suijishuzucount=0;
+//			}
+//		}
+//		if(ADzhi21!=0){
+//		suiji=1;
+//		}		
+//		mysjs=rand()%2;
+//		}
+		if(mycountLED%5==0){
+    // ------------------- ADzhi12控制1、2号灯：0蓝→2000绿→4096红，双灯同色 -------------------
+    ceshikan2.B = (4096 - ADzhi12)/128 + 1;  // 0最蓝，4096最暗，RGB≤33
+    ceshikan2.G = (2000 - abs(ADzhi12 - 2000))/128 + 1; // 2000最绿，两端渐变暗
+    ceshikan2.R = ADzhi12/128 + 1;  // 4096最红，0最暗
+    // ------------------- ADzhi22控制3号灯：0粉→4096黄，独立控色，极致低亮 -------------------
+    // 粉色核心：红亮+蓝中+绿暗；黄色核心：红亮+绿亮+蓝暗，/128缩放保持低亮
+    ceshikan1.R = ADzhi22/128 + 8;  // 红通道全程高亮（粉/黄基础，+8提纯色调）
+    ceshikan1.G = ADzhi22/128 + 1;  // 绿：0最暗→4096渐亮（黄的核心，粉时极暗）
+    ceshikan1.B = (4096 - ADzhi22)/128 + 1;  // 蓝：0最亮→4096最暗（粉的核心，黄时极暗）
+//    ceshikan3.B=(ADzhi21/128 + 1)*1;  // ADzhi21主导蓝（/128极低亮度）
+//    ceshikan3.G=(ADzhi22/128 + 1)*1;  // ADzhi22主导绿（/128极低亮度）
+//    ceshikan3.R=(ADzhi11/128 + 1)*1;  // ADzhi11主导红（/128极低亮度）
+//			Set_Color_On_Array(0,*ceshikan[3]);
+			Set_Color_On_Array(1,*ceshikan[0]);	
+			Set_Color_On_Array(2,*ceshikan[1]);
+//			Set_Color_On_Array(3,*ceshikan[2]);	
+			Send_ALL_LED_Array();
 		}
-		if(ADzhi21!=0){
-		suiji=1;
-		}		
-		mysjs=rand()%2;
-		}
-		if(mycountLED>=1000){
+			if(mycountLED>=999999){
 			mycountLED=0;
-			static unsigned char mymyflag=0;
-			ceshikan1.B=(suijishu[1]+1)*1;
-			ceshikan1.G=(suijishu[0]+2)*2;
-			ceshikan1.R=(suijishu[2]+mysjs)*1;
-			ceshikan2.B=(suijishu[0]+1)*2;
-			ceshikan2.G=(suijishu[1]+mysjs)*1;
-			ceshikan2.R=(suijishu[2]+3)*2;
-			ceshikan3.B=(suijishu[2]+mysjs)*2;
-			ceshikan3.G=(suijishu[1]+1)*3;
-			ceshikan3.R=(suijishu[0]+3)*2;			
-			switch(mymyflag){
-				case 0:
-	Set_Color_On_Array(0,*ceshikan[3]);
-	Set_Color_On_Array(1,*ceshikan[0]);	
-	Set_Color_On_Array(2,*ceshikan[1]);
-	Set_Color_On_Array(3,*ceshikan[2]);	
-				mymyflag++;				
-				break;
-				case 1:
-	Set_Color_On_Array(0,*ceshikan[3]);
-	Set_Color_On_Array(1,*ceshikan[0]);	
-	Set_Color_On_Array(2,*ceshikan[1]);
-	Set_Color_On_Array(3,*ceshikan[2]);	
-				mymyflag=0;	
-				break;
 			}
-		Send_ALL_LED_Array();
-		}
+//			ceshikan1.B=(suijishu[1]+1)*1;
+//			ceshikan1.G=(suijishu[0]+2)*2;
+//			ceshikan1.R=(suijishu[2]+mysjs)*1;
+//			ceshikan2.B=(suijishu[0]+1)*2;
+//			ceshikan2.G=(suijishu[1]+mysjs)*1;
+//			ceshikan2.R=(suijishu[2]+3)*2;
+//			ceshikan3.B=(suijishu[2]+mysjs)*2;
+//			ceshikan3.G=(suijishu[1]+1)*3;
+//			ceshikan3.R=(suijishu[0]+3)*2;	
 		switch(firstflag){
 			case 1:
 				firstflagcnt++;
@@ -319,26 +297,6 @@ void TIM2_IRQHandler(void)
 		GPIO_WriteBit(GPIOA,GPIO_Pin_12,(BitAction)1);	
 			}
 		}	
-//		if(up==3){
-//		if(aj3==0){
-//		aj3=1;
-//		GPIO_WriteBit(GPIOA,GPIO_Pin_10,(BitAction)0);
-//		}
-//			else{
-//			aj3=0;
-//		GPIO_WriteBit(GPIOA,GPIO_Pin_10,(BitAction)1);
-//			}
-//		}
-//		if(up==2){
-//		if(aj2==0){
-//		aj2=1;
-//		GPIO_WriteBit(GPIOA,GPIO_Pin_9,(BitAction)0);
-//		}
-//			else{
-//			aj2=0;
-//		GPIO_WriteBit(GPIOA,GPIO_Pin_9,(BitAction)1);
-//			}
-//		}
 		if(down==3){  //中间左右1
 			aj3=1;
 		GPIO_WriteBit(GPIOA,GPIO_Pin_10,(BitAction)0);

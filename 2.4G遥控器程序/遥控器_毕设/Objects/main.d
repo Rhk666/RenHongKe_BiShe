@@ -32,6 +32,7 @@
 .\objects\main.o: .\Hardware\OLED.h
 .\objects\main.o: .\Hardware\NRF24L01.h
 .\objects\main.o: .\Hardware\NRF24L01_Define.h
+.\objects\main.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: .\Hardware\key.h
 .\objects\main.o: .\System\ADC.h
 .\objects\main.o: .\System\WS2812B.h
