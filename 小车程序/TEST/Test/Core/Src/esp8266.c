@@ -11,7 +11,7 @@
 #include <stdio.h>
 
 #define ONENET_RETRY_MAX 8  // OneNet连接最大重试次数
-#define WIFI_RETRY_MAX 8  // 最大重试次数，方便修改
+#define WIFI_RETRY_MAX 10  // 最大重试次数，方便修改
 
 #define ESP8266_WIFI_INFO		"AT+CWJAP=\"stm32f407\",\"rgh2742714184\"\r\n"//手机热点wifi的账号和密码
 //#define ESP8266_WIFI_INFO		"AT+CWJAP=\"NEW_5501-B\",\"elec5501\"\r\n"//实验室wifi的账号和密码
@@ -88,7 +88,7 @@ _Bool ESP8266_WaitRecive(void)
 _Bool ESP8266_SendCmd(char *cmd, char *res)
 {
 	
-	unsigned char timeOut = 180;
+	unsigned char timeOut = 70;
 	HAL_UART_Transmit(&huart3,(unsigned char *)cmd,strlen((const char *)cmd),10);
 //	return 1;
 //	Usart_SendString(USART2, (unsigned char *)cmd, strlen((const char *)cmd));
@@ -105,7 +105,7 @@ _Bool ESP8266_SendCmd(char *cmd, char *res)
 			}
 		}
 		
-		HAL_Delay(10);
+		HAL_Delay(7);
 	}
 	
 	return 1;
@@ -179,7 +179,7 @@ unsigned char *ESP8266_GetIPD(unsigned short timeOut)
 			}
 		}
 		
-		HAL_Delay(5);
+		HAL_Delay(1);
         timeOut--;		//延时等待
 	} while(timeOut>0);
 	

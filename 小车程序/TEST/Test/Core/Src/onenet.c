@@ -158,7 +158,7 @@ void OneNet_Publish(const char *topic, const char *msg)
 
 	MQTT_PACKET_STRUCTURE mqttPacket = {NULL, 0, 0, 0};							//协议包
 	
-	printf("Publish Topic: %s, Msg: %s\r\n", topic, msg);//注意此处666
+//	printf("Publish Topic: %s, Msg: %s\r\n", topic, msg);//注意此处666
 	
 	if(MQTT_PacketPublish(MQTT_PUBLISH_ID, topic, msg, strlen(msg),MQTT_QOS_LEVEL0, 0, 1, &mqttPacket) == 0)
 	{

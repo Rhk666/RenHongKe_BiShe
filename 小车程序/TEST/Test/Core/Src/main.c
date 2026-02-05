@@ -96,7 +96,7 @@ unsigned char *dataPtr = NULL;
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 unsigned int count = 0, jishi_count = 0;
-unsigned int bici = 50;
+
 float PT, T, ALT;
 unsigned char Send_Flag = 1, Ce_liang_Flag = 0;
 uint32_t CT_data[2];
@@ -109,8 +109,10 @@ unsigned int ADzhi22,My_ADzhi22,Last_ADzhi22;
 unsigned char anjianzhi[6];
 unsigned char p3Data,p5Data,Error_Count=0,p2Data;
 char PUBLIS_BUF[256];
-unsigned int TimeCount;
+unsigned int TimeCount,TimeCount2;
 float Roll,Pitch,Yaw,My_Yaw,Delta_Yaw,Last_Yaw,Yaw_offset,First_Yaw,MuBiao_JiaoDu=0;
+unsigned int *p;
+
 int First_Yaw_flag=0;
 unsigned int PWM_1_Dier,PWM_2_Dier;
 extern unsigned int WiFi_Success_Flag;
@@ -123,7 +125,11 @@ unsigned int fangxiang,PWM_1_24G,PWM_2_24G;
 int VAL_DATA,Quan_Shu=0;
 int MUBIAO_Speed_Z,MUBIAO_Speed_Y;
 unsigned int Shang_Yun_Flag=1,Shang_Yun_Run_Flag=0;
-unsigned int Test_LED_Count = 0;
+unsigned int Test_LED_Count = 0,WhilE_Flag=0;
+unsigned int NRF24L01_Send_Error[5];
+
+
+unsigned int bici = 5;
 /* USER CODE END 0 */
 
 /**
@@ -225,14 +231,15 @@ int main(void)
     /* USER CODE BEGIN 3 */
 		
 		//循迹
+		WhilE_Flag=1;
 		MY_SCAN();
 		VAL_DATA = return_to_expectation();
 		MY_Run(Dian_Ji_KaiQi|Dian_Ji_KaiQi_anjian);
-		
+		WhilE_Flag=2;
 		HAL_UART_Receive_IT(&huart3, &p3Data, 1);
 		HAL_UART_Receive_IT(&huart2, &p2Data, 1);
 		HAL_UART_Receive_IT(&huart5, &p5Data, 1);
-		
+		WhilE_Flag=3;
 		if(RX_Re_Data() == 1){   //陀螺仪处理
 		Roll = ( float)((int16_t)Rx_Data[1] << 8 | Rx_Data[0]) / 32768 * 180;
 		Pitch = (float)((int16_t)Rx_Data[3] << 8 | Rx_Data[2]) / 32768 * 180;
@@ -255,13 +262,15 @@ int main(void)
 		My_Yaw=Yaw+Yaw_offset;
 		Last_Yaw=Yaw;
 //		printf("%f,%f,%f\r\n",My_Yaw,Roll,Pitch);
-    Test_LED_Count++;
-    if (Test_LED_Count % bici == 0)
-    {
-      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
-    }
+//    Test_LED_Count++;
+//    if (Test_LED_Count % bici == 0)
+//    {
+//      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
+//    }
 	}
-
+	WhilE_Flag=4;
+//		if(++TimeCount2 >= 300){
+//				TimeCount2=0;
     if (Send_Flag == 1)
     {
       Send_Flag = 1;
@@ -269,31 +278,58 @@ int main(void)
       NRF24L01_TxPacket[1]++;
       NRF24L01_TxPacket[2]++;
       NRF24L01_TxPacket[3]++;
-      NRF24L01_Send();
-    } 
+//			NRF24L01_Send();
+			switch(NRF24L01_Send()){
+				case 0:
+					NRF24L01_Send_Error[0]++;
+				break;
+				case 1:
+					NRF24L01_Send_Error[1]++;
+				break;
+				case 2:
+					NRF24L01_Send_Error[2]++;
+				break;
+				case 3:
+					NRF24L01_Send_Error[3]++;
+				break;
+				case 4:
+					NRF24L01_Send_Error[4]++;
+				break;
+			}
+//    } 		
+		}
+
+		WhilE_Flag=5;
 		//下面注意控制时间
 		
 		if(Shang_Yun_Flag==1){
-				if(++TimeCount >= 400)
+				if(++TimeCount >= 300)
 				{
-					Shang_Yun_Run_Flag=1;
 					
-					JH_Read_CTdata(CT_data);                        
+					Shang_Yun_Run_Flag=1;
+					JH_Read_CTdata(CT_data);         //较慢               
 					c1 = CT_data[0] * 1000 / 1024 / 1024;           
 					t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
 					BMP280GetData(&PT, &T, &ALT);
 					
 					JsonValue();
-					OneNet_Publish(devPubTopic, PUBLIS_BUF);
+					OneNet_Publish(devPubTopic, PUBLIS_BUF); //非常慢
 					ESP8266_Clear();
 					TimeCount = 0;
-					Shang_Yun_Run_Flag=2;
+//					Shang_Yun_Run_Flag=2;
+					Test_LED_Count++;
+					if (Test_LED_Count % bici == 0)
+					{
+						HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
+					}
+	
 				}
-				dataPtr = ESP8266_GetIPD(1);
+					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
 				if(dataPtr != NULL)
 				OneNet_RevPro(dataPtr);	
-				Shang_Yun_Run_Flag=0;		
+//				Shang_Yun_Run_Flag=0;					
 		}
+		WhilE_Flag=6;
 		    if (NRF24L01_Receive() == 1)
     { 
 			if((NRF24L01_RxPacket[0] * 256 + NRF24L01_RxPacket[1])>0&&(NRF24L01_RxPacket[0] * 256 + NRF24L01_RxPacket[1])<=5000&&(NRF24L01_RxPacket[0] * 256 + NRF24L01_RxPacket[1])!=2056){
@@ -831,7 +867,10 @@ void PID_Yunxing_Weizhi(PID *pid, float mubiao, float fankuizhi)
 }
 void JsonValue()
 {
-//	uint8_t Temp = c1;
+	uint8_t Temp = c1;
+//	uint8_t Hum_D = t1/10;
+//	uint8_t Hum_X = t1%10;
+//	float Hum=Hum_D+((float)Hum_X/10);
 	uint8_t Hum = t1/10;
 	float qiya=PT;
 	uint8_t shidu=c1/10;

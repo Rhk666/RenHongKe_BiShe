@@ -563,7 +563,7 @@ void NRF24L01_Init(void)
 uint8_t NRF24L01_Send(void)
 {
 	uint8_t Status;
-	uint8_t SendFlag;
+	uint8_t SendFlag=0;
 	uint32_t Timeout;
 	
 	/*发送地址，设置为全局数组NRF24L01_TxAddress指定的地址，地址宽度固定为5字节*/
@@ -579,7 +579,7 @@ uint8_t NRF24L01_Send(void)
 	NRF24L01_Tx();
 	
 	/*指定超时时间，即循环读取状态寄存器的次数，具体值可以实测确定*/
-	Timeout = 10000;
+	Timeout = 5000;
 	
 	/*循环读取状态寄存器*/
 	while (1)

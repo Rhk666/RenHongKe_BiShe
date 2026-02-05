@@ -213,12 +213,42 @@
         <Ww>
           <count>11</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NRF24L01_RxPacket</ItemText>
+          <ItemText>Dian_Ji_KaiQi,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>12</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Dian_Ji_KaiQi,0x0A</ItemText>
+          <ItemText>&amp;ADzhi12</ItemText>
+        </Ww>
+        <Ww>
+          <count>13</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>\\Test\../Core/Src/main.c\ADzhi12</ItemText>
+        </Ww>
+        <Ww>
+          <count>14</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>&amp;ADzhi12</ItemText>
+        </Ww>
+        <Ww>
+          <count>15</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>WhilE_Flag,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>16</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>&amp;WhilE_Flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>17</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>NRF24L01_TxPacket</ItemText>
+        </Ww>
+        <Ww>
+          <count>18</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>NRF24L01_Send_Error,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
@@ -336,6 +366,16 @@
           <count>22</count>
           <WinNumber>2</WinNumber>
           <ItemText>Usart_Error_count,0x0A</ItemText>
+        </Ww>
+        <Ww>
+          <count>23</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>&amp;My_Yaw</ItemText>
+        </Ww>
+        <Ww>
+          <count>24</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>&amp;t1</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>

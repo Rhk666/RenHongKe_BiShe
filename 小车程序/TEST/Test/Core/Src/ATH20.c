@@ -104,7 +104,7 @@ void Delay_N10us(uint32_t t)//延时函数
 
    while(t--)
   {
-    for (k = 0; k < 2; k++)//110
+    for (k = 0; k < 1; k++)//110
       ;
   }
 }
@@ -238,9 +238,9 @@ void ZSSC_I2C_WR_Byte(uint8_t Byte) //往AHT10写一个字节
 		 
 	}
 	SCL_Pin_Output_Low();
-	SensorDelay_us(8);   
+	SensorDelay_us(4);   
 	SDA_Pin_IN_FLOATING();
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 }	
 
 
@@ -250,7 +250,7 @@ uint8_t ZSSC_I2C_RD_Byte(void)//从AHT10读取一个字节
 	Byte = 0;
 	SCL_Pin_Output_Low();
 	SDA_Pin_IN_FLOATING();
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 	for(i=0;i<8;i++)
 	{
     SCL_Pin_Output_High();		
@@ -262,7 +262,7 @@ uint8_t ZSSC_I2C_RD_Byte(void)//从AHT10读取一个字节
 		Delay_1us();
 	}
     SDA_Pin_IN_FLOATING();
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 	return Byte;
 }
 
@@ -273,9 +273,9 @@ uint8_t Receive_ACK(void)   //看AHT10是否有回复ACK
 	CNT = 0;
 	SCL_Pin_Output_Low();	
 	SDA_Pin_IN_FLOATING();
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 	SCL_Pin_Output_High();	
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 	while((HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_9))  && CNT < 100) 
 	CNT++;
 	if(CNT == 100)
@@ -283,7 +283,7 @@ uint8_t Receive_ACK(void)   //看AHT10是否有回复ACK
 		return 0;
 	}
  	SCL_Pin_Output_Low();	
-	SensorDelay_us(8);	
+	SensorDelay_us(4);	
 	return 1;
 }
 
@@ -318,11 +318,11 @@ void Send_NOT_ACK(void)	//主机不回复ACK
 void Stop_I2C(void)	  //一条协议结束
 {
 	SDA_Pin_Output_Low();
-	SensorDelay_us(8);
+	SensorDelay_us(4);
 	SCL_Pin_Output_High();	
-	SensorDelay_us(8);
+	SensorDelay_us(4);
 	SDA_Pin_Output_High();
-	SensorDelay_us(8);
+	SensorDelay_us(4);
 }
 
 uint8_t JH_Read_Status(void)//读取AHT10的状态寄存器
@@ -437,7 +437,7 @@ unsigned char JH_Init(void)   //初始化AHT10
 {
 	static unsigned int JH_Count=0;
 	Init_I2C_Sensor_Port();
-	SensorDelay_us(11038);
+	SensorDelay_us(11028);
 
 	I2C_Start();
 	ZSSC_I2C_WR_Byte(0x70);

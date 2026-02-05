@@ -22,12 +22,64 @@ Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
 D:\keil\32project\AAA_MY_BiShe\TEST\Test\MDK-ARM\Test.uvprojx
-Project File Date:  01/18/2026
+Project File Date:  02/01/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin'
 Rebuild target 'Test'
 assembling startup_stm32f407xx.s...
+compiling MqttKit.c...
+compiling cJSON.c...
+..\Core\Src\cJSON.c(55): warning:  #1293-D: assignment in condition
+        if (!(copy = (char*)cJSON_malloc(len))) return 0;
+..\Core\Src\cJSON.c(278): warning:  #1293-D: assignment in condition
+  	ptr=str;while ((token=*ptr) && ++len) {if (strchr("\"\\\b\f\n\r\t",token)) len++; else if (token<32) len+=5;ptr++;}
+..\Core\Src\cJSON.c(352): warning:  #111-D: statement is unreachable
+  	return p.buffer;
+..\Core\Src\cJSON.c(423): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item())) return 0; 	/* memory fail */
+..\Core\Src\cJSON.c(535): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item()))	return 0; /* memory fail */
+..\Core\Src\cJSON.c: 5 warnings, 0 errors
+compiling stm32f4xx_hal_msp.c...
+compiling stm32f4xx_it.c...
+compiling tim.c...
+compiling gpio.c...
+compiling onenet.c...
+..\Core\Src\esp8266.h(21): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Core\Src\onenet.c(69): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i = 0;
+..\Core\Src\onenet.c(245): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
+..\Core\Src\onenet.c(252): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
+..\Core\Src\onenet.c(200): warning:  #177-D: variable "dataPtr"  was declared but never referenced
+  	char *dataPtr = NULL;
+..\Core\Src\onenet.c(201): warning:  #177-D: variable "numBuf"  was declared but never referenced
+  	char numBuf[10];
+..\Core\Src\onenet.c(202): warning:  #177-D: variable "num"  was declared but never referenced
+  	int num = 0;
+..\Core\Src\onenet.c: 7 warnings, 0 errors
+compiling ATH20.c...
+..\Core\Src\ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\ATH20.c(147): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);
+..\Core\Src\ATH20.c(159): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,0);  
+..\Core\Src\ATH20.c(177): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,1);
+..\Core\Src\ATH20.c(183): warning:  #188-D: enumerated type mixed with another type
+   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,0);
+..\Core\Src\ATH20.c: 5 warnings, 0 errors
+compiling esp8266.c...
+..\Core\Src\esp8266.h(21): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Core\Src\esp8266.c(424): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\esp8266.c: 2 warnings, 0 errors
+compiling usart.c...
 compiling MY_IIC.c...
 ..\Core\Src\MY_IIC.c(292): warning:  #188-D: enumerated type mixed with another type
   	Soft_I2C_SCL_1;
@@ -106,29 +158,6 @@ compiling BMP280.c...
 ..\Core\Src\BMP280.c(147): warning:  #1035-D: single-precision operand implicitly converted to double-precision
   	*asl = BMP280PressureToAltitude(pressure)+152.5;	/*×ª»»³Éº£°Î*/
 ..\Core\Src\BMP280.c: 1 warning, 0 errors
-compiling esp8266.c...
-..\Core\Src\esp8266.h(21): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
-  char RX_Re_Data();
-..\Core\Src\esp8266.c(424): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\esp8266.c: 2 warnings, 0 errors
-compiling MqttKit.c...
-compiling cJSON.c...
-..\Core\Src\cJSON.c(55): warning:  #1293-D: assignment in condition
-        if (!(copy = (char*)cJSON_malloc(len))) return 0;
-..\Core\Src\cJSON.c(278): warning:  #1293-D: assignment in condition
-  	ptr=str;while ((token=*ptr) && ++len) {if (strchr("\"\\\b\f\n\r\t",token)) len++; else if (token<32) len+=5;ptr++;}
-..\Core\Src\cJSON.c(352): warning:  #111-D: statement is unreachable
-  	return p.buffer;
-..\Core\Src\cJSON.c(423): warning:  #1293-D: assignment in condition
-  		if (!(new_item=cJSON_New_Item())) return 0; 	/* memory fail */
-..\Core\Src\cJSON.c(535): warning:  #1293-D: assignment in condition
-  		if (!(new_item=cJSON_New_Item()))	return 0; /* memory fail */
-..\Core\Src\cJSON.c: 5 warnings, 0 errors
-compiling usart.c...
-compiling gpio.c...
-compiling stm32f4xx_hal_msp.c...
-compiling stm32f4xx_it.c...
 compiling main.c...
 ../Core/Src/ath20.h(22): warning:  #1-D: last line of file ends without a newline
   #endif
@@ -140,99 +169,72 @@ compiling main.c...
   void MY_SCAN();
 ../Core/Src/main.c(85): warning:  #1295-D: Deprecated declaration JsonValue - give arg types
   void JsonValue();
-../Core/Src/main.c(411): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(447): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,0);
-../Core/Src/main.c(414): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(450): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,1);
-../Core/Src/main.c(417): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(453): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,0);
-../Core/Src/main.c(420): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(456): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,1);
-../Core/Src/main.c(424): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(460): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,0);
-../Core/Src/main.c(425): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(461): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,0);	
-../Core/Src/main.c(473): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(509): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,PWM_Debug_Dier_1);		
-../Core/Src/main.c(474): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(510): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,PWM_Debug_Dier_2);				
-../Core/Src/main.c(481): warning:  #188-D: enumerated type mixed with another type
-  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);
-../Core/Src/main.c(484): warning:  #188-D: enumerated type mixed with another type
-  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);
-../Core/Src/main.c(489): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,PWM_Debug_Dier_1);		
-../Core/Src/main.c(490): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,PWM_Debug_Dier_2);				
-../Core/Src/main.c(502): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
-../Core/Src/main.c(503): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
-../Core/Src/main.c(506): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,1);		
-../Core/Src/main.c(507): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);		
-../Core/Src/main.c(513): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
-../Core/Src/main.c(514): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
 ../Core/Src/main.c(517): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);
+../Core/Src/main.c(520): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);
+../Core/Src/main.c(525): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,PWM_Debug_Dier_1);		
+../Core/Src/main.c(526): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,PWM_Debug_Dier_2);				
+../Core/Src/main.c(538): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
+../Core/Src/main.c(539): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
+../Core/Src/main.c(542): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,1);		
-../Core/Src/main.c(518): warning:  #188-D: enumerated type mixed with another type
+../Core/Src/main.c(543): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);		
+../Core/Src/main.c(549): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
+../Core/Src/main.c(550): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
+../Core/Src/main.c(553): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,1);		
+../Core/Src/main.c(554): warning:  #188-D: enumerated type mixed with another type
   		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);	
-../Core/Src/main.c(839): warning:  #223-D: function "memset" declared implicitly
+../Core/Src/main.c(878): warning:  #223-D: function "memset" declared implicitly
   	memset(PUBLIS_BUF, 0, sizeof(PUBLIS_BUF));
-../Core/Src/main.c: 26 warnings, 0 errors
-compiling onenet.c...
-..\Core\Src\esp8266.h(21): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
-  char RX_Re_Data();
-..\Core\Src\onenet.c(69): warning:  #177-D: variable "i"  was declared but never referenced
-  	int i = 0;
-..\Core\Src\onenet.c(245): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
-..\Core\Src\onenet.c(252): warning:  #188-D: enumerated type mixed with another type
-  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
-..\Core\Src\onenet.c(200): warning:  #177-D: variable "dataPtr"  was declared but never referenced
-  	char *dataPtr = NULL;
-..\Core\Src\onenet.c(201): warning:  #177-D: variable "numBuf"  was declared but never referenced
-  	char numBuf[10];
-..\Core\Src\onenet.c(202): warning:  #177-D: variable "num"  was declared but never referenced
-  	int num = 0;
-..\Core\Src\onenet.c: 7 warnings, 0 errors
-compiling tim.c...
-compiling ATH20.c...
-..\Core\Src\ath20.h(22): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Core\Src\ATH20.c(147): warning:  #188-D: enumerated type mixed with another type
-  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);
-..\Core\Src\ATH20.c(159): warning:  #188-D: enumerated type mixed with another type
-  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,0);  
-..\Core\Src\ATH20.c(177): warning:  #188-D: enumerated type mixed with another type
-  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,1);
-..\Core\Src\ATH20.c(183): warning:  #188-D: enumerated type mixed with another type
-   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,0);
-..\Core\Src\ATH20.c: 5 warnings, 0 errors
-compiling stm32f4xx_hal_rcc_ex.c...
-compiling stm32f4xx_hal_flash.c...
-compiling stm32f4xx_hal_rcc.c...
-compiling stm32f4xx_hal_flash_ramfunc.c...
-compiling stm32f4xx_hal_flash_ex.c...
-compiling stm32f4xx_hal_gpio.c...
+../Core/Src/main.c(870): warning:  #177-D: variable "Temp"  was declared but never referenced
+  	uint8_t Temp = c1;
+../Core/Src/main.c: 27 warnings, 0 errors
 compiling stm32f4xx_hal_tim_ex.c...
-compiling stm32f4xx_hal_dma.c...
-compiling stm32f4xx_hal_dma_ex.c...
 compiling stm32f4xx_hal_tim.c...
-compiling stm32f4xx_hal_pwr.c...
-compiling stm32f4xx_hal_pwr_ex.c...
-compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
 compiling stm32f4xx_hal.c...
 compiling stm32f4xx_hal_exti.c...
-compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_flash.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_rcc.c...
 compiling stm32f4xx_hal_uart.c...
+compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=32054 RO-data=894 RW-data=352 ZI-data=28176  
+Program Size: Code=32078 RO-data=894 RW-data=356 ZI-data=28196  
 FromELF: creating hex file...
-"Test\Test.axf" - 0 Error(s), 81 Warning(s).
+"Test\Test.axf" - 0 Error(s), 82 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -256,7 +258,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE@6.1.0
       Include file:  CMSIS/Core/Include/tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:10
 </pre>
 </body>
 </html>
