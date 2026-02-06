@@ -4,5 +4,5 @@
 
 ### 个人微信
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Rhk666/RenHongKe_BiShe/master/微信小程序/project/image/个人微信.jpg" width="400"/>
+  <img src="https://raw.githubusercontent.com/Rhk666/RenHongKe_BiShe/master/微信小程序码/个人微信.jpg" width="400"/>
 </p>
