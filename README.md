@@ -22,16 +22,6 @@
 | 数据云同步    | 采集数据通过ESP8266上传至**OneNET物联网平台**，支持历史数据存储+阈值告警       |
 | 多端交互终端  | 提供「微信小程序/安卓蓝牙APP」双终端，实现远程/本地的状态观测+实时控制         |
 
-
-## 🛠️ 系统架构
-```mermaid
-graph LR
-A[传感器层<br>温湿度/气压/GPS] --> B[MCU控制层<br>STM32F103]
-C[2.4G/蓝牙遥控] --> B
-B --> D[通信层<br>ESP8266/蓝牙]
-D --> E[云端层<br>OneNET平台]
-D --> F[终端层<br>微信小程序/安卓APP]
-
 ### 个人微信
 <p align="center">
   <img src="https://raw.githubusercontent.com/Rhk666/RenHongKe_BiShe/master/微信小程序码/个人微信.jpg" width="400"/>
