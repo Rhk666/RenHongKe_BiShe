@@ -233,7 +233,7 @@ void OneNet_RevPro(unsigned char *cmd)
 				// 对数据包req_payload进行JSON格式解析
 				json = cJSON_Parse(req_payload);
 				params_json = cJSON_GetObjectItem(json,"params");
-				Temp_json = cJSON_GetObjectItem(params_json,"Temp");
+				Temp_json = cJSON_GetObjectItem(params_json,"temp_float");
 				Led_json = cJSON_GetObjectItem(params_json,"Led");
 				if(Led_json != NULL)
 				{
@@ -241,13 +241,11 @@ void OneNet_RevPro(unsigned char *cmd)
 					{
 						MY_MQTT_FLAG=1;
 						Dian_Ji_KaiQi_anjian=1;
-//						Dian_Ji_KaiQi=1;
 						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
 					}
 					else  //cJSON_False
 					{
 						MY_MQTT_FLAG=2;
-//						Dian_Ji_KaiQi=0;
 						Dian_Ji_KaiQi_anjian=0;
 						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
 					}

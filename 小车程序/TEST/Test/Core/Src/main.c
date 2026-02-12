@@ -129,7 +129,7 @@ unsigned int Test_LED_Count = 0,WhilE_Flag=0;
 unsigned int NRF24L01_Send_Error[5];
 
 
-unsigned int bici = 5;
+unsigned int bici = 100;
 /* USER CODE END 0 */
 
 /**
@@ -262,17 +262,19 @@ int main(void)
 		My_Yaw=Yaw+Yaw_offset;
 		Last_Yaw=Yaw;
 //		printf("%f,%f,%f\r\n",My_Yaw,Roll,Pitch);
-//    Test_LED_Count++;
-//    if (Test_LED_Count % bici == 0)
-//    {
-//      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
-//    }
+		
 	}
+		    Test_LED_Count++;
+    if (Test_LED_Count % bici == 0)
+    {
+      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
+    }
 	WhilE_Flag=4;
-//		if(++TimeCount2 >= 300){
-//				TimeCount2=0;
     if (Send_Flag == 1)
     {
+			if(++TimeCount2>=500){
+			
+			TimeCount2=0;
       Send_Flag = 1;
       NRF24L01_TxPacket[0] = t1;
       NRF24L01_TxPacket[1]++;
@@ -296,7 +298,7 @@ int main(void)
 					NRF24L01_Send_Error[4]++;
 				break;
 			}
-//    } 		
+    } 		
 		}
 
 		WhilE_Flag=5;
@@ -305,7 +307,6 @@ int main(void)
 		if(Shang_Yun_Flag==1){
 				if(++TimeCount >= 300)
 				{
-					
 					Shang_Yun_Run_Flag=1;
 					JH_Read_CTdata(CT_data);         //较慢               
 					c1 = CT_data[0] * 1000 / 1024 / 1024;           
@@ -317,12 +318,6 @@ int main(void)
 					ESP8266_Clear();
 					TimeCount = 0;
 //					Shang_Yun_Run_Flag=2;
-					Test_LED_Count++;
-					if (Test_LED_Count % bici == 0)
-					{
-						HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_2); //陀螺仪正常执行现象
-					}
-	
 				}
 					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
 				if(dataPtr != NULL)
@@ -357,9 +352,7 @@ int main(void)
       anjianzhi[3] = (NRF24L01_RxPacket[8] >> 3) & 0x01;
       anjianzhi[4] = (NRF24L01_RxPacket[8] >> 1) & 0x03;
       anjianzhi[5] = (NRF24L01_RxPacket[8]) & 0x01;
-			if(anjianzhi[0]==1){
-			Dian_Ji_KaiQi_anjian=0;
-			}
+			bici=30;
 //			printf("%d,%d,%d,%d,%d,%d,%d,%d\r\n",My_ADzhi12,My_ADzhi21,anjianzhi[0],anjianzhi[1],anjianzhi[2],anjianzhi[3],anjianzhi[4],anjianzhi[5]);
     }
 //			printf("%d,%d\n",My_ADzhi12,My_ADzhi21);
@@ -420,6 +413,18 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	static unsigned int anjian_Count=0;
   if (htim == (&htim2))  //1KHZ
   {
+			if(anjianzhi[0]==1){
+			Shang_Yun_Flag=0;
+			}
+			if(anjianzhi[0]==0){
+			Shang_Yun_Flag=1;
+			}
+		if(Dian_Ji_KaiQi_anjian==1){
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
+		}
+		else if(Dian_Ji_KaiQi_anjian==0){
+		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
+		}
 		if(anjianzhi[4]==1){ //0正常
 		if(anjianzhi[5]==1){
 		Dian_Ji_KaiQi=1;
@@ -868,16 +873,16 @@ void PID_Yunxing_Weizhi(PID *pid, float mubiao, float fankuizhi)
 void JsonValue()
 {
 	uint8_t Temp = c1;
-//	uint8_t Hum_D = t1/10;
-//	uint8_t Hum_X = t1%10;
-//	float Hum=Hum_D+((float)Hum_X/10);
-	uint8_t Hum = t1/10;
+	uint8_t Hum_D = t1/10;
+	uint8_t Hum_X = t1%10;
+	float Hum=Hum_D+((float)Hum_X/10);
+//	uint8_t Hum = t1/10;
 	float qiya=PT;
 	uint8_t shidu=c1/10;
 	
 	memset(PUBLIS_BUF, 0, sizeof(PUBLIS_BUF));
 	
-	sprintf(PUBLIS_BUF,"{\"id\":\"123\",\"params\":{\"Temp\":{\"value\":%d},\"Qiya\":{\"value\":%.1f},\"ShiDu\":{\"value\":%d}}}",
+	sprintf(PUBLIS_BUF,"{\"id\":\"123\",\"params\":{\"temp_float\":{\"value\":%.1f},\"Qiya\":{\"value\":%.1f},\"ShiDu\":{\"value\":%d}}}",
 					Hum,qiya,shidu);	
 }
 /* USER CODE END 4 */
