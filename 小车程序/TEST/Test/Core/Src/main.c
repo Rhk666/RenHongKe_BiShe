@@ -46,6 +46,7 @@
 #define gethui6() Button_Flag[4]
 #define gethui7() Button_Flag[5]
 #define gethui8() Button_Flag[6]
+#define UPLOAD_INTERVAL_MS  500  // 核心：每 5000ms (5秒) 上传一次数据，必须小于60秒
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -130,7 +131,7 @@ unsigned int NRF24L01_Send_Error[5];
 
 static uint32_t tick_count = 0;
 static uint32_t last_send_tick = 0; // 记录上次发送的时间点
-
+uint32_t last_upload_tick=0;
 unsigned int bici = 100;
 /* USER CODE END 0 */
 
@@ -210,6 +211,7 @@ int main(void)
 	}
 			/*订阅主题*/
 	OneNet_Subscribe(devSubTopic,1);
+	last_upload_tick = HAL_GetTick(); // 记录上次上传的时间点
 	}
 
   HAL_TIM_Base_Start_IT(&htim2);
@@ -307,41 +309,52 @@ int main(void)
 		//下面注意控制时间
 		
 		if(Shang_Yun_Flag==1){
-//				if(++TimeCount >= 300)
-//				{
-//					Shang_Yun_Run_Flag=1;
-//					JH_Read_CTdata(CT_data);         //较慢               
-//					c1 = CT_data[0] * 1000 / 1024 / 1024;           
-//					t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
-//					BMP280GetData(&PT, &T, &ALT);
-//					
-//					JsonValue();
-//					OneNet_Publish(devPubTopic, PUBLIS_BUF); //非常慢
-//					ESP8266_Clear();
-//					TimeCount = 0;
-////					Shang_Yun_Run_Flag=2;
-//				}
-//					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
-//				if(dataPtr != NULL)
-//				OneNet_RevPro(dataPtr);	
-////				Shang_Yun_Run_Flag=0;		
-				dataPtr = ESP8266_GetIPD(1); 
-				if(dataPtr != NULL)
-					{
-						OneNet_RevPro(dataPtr);
-						ESP8266_Clear();
-					}			
+			
+    dataPtr = ESP8266_GetIPD(1); 
+    if(dataPtr != NULL)
+    {
+        OneNet_RevPro(dataPtr);
+        ESP8266_Clear(); // 【必须加】只有处理完接收才清空
+    }
+		
 				if(++TimeCount >= 300)
 				{
+					Shang_Yun_Run_Flag=1;
 					JH_Read_CTdata(CT_data);         //较慢               
 					c1 = CT_data[0] * 1000 / 1024 / 1024;           
 					t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
 					BMP280GetData(&PT, &T, &ALT);
+					
 					JsonValue();
 					OneNet_Publish(devPubTopic, PUBLIS_BUF); //非常慢
-					ESP8266_Clear();
-					TimeCount = 0;		
-		}
+//					ESP8266_Clear();
+					TimeCount = 0;
+//					Shang_Yun_Run_Flag=2;
+				}
+//					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
+//				if(dataPtr != NULL)
+//				OneNet_RevPro(dataPtr);	
+//				Shang_Yun_Run_Flag=0;	
+
+			
+//				dataPtr = ESP8266_GetIPD(1); 
+//				if(dataPtr != NULL)
+//					{
+//						OneNet_RevPro(dataPtr);
+//						ESP8266_Clear();
+//					}		
+//    if(++TimeCount >= 300)
+//    {
+//        JH_Read_CTdata(CT_data);         
+//        c1 = CT_data[0] * 1000 / 1024 / 1024;           
+//        t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
+//        BMP280GetData(&PT, &T, &ALT);
+//        
+//        JsonValue();
+//        OneNet_Publish(devPubTopic, PUBLIS_BUF);
+//        // ESP8266_Clear(); 
+//					TimeCount=0;
+//    }	
 		}
 		WhilE_Flag=6;
 		    if (NRF24L01_Receive() == 1)
@@ -432,12 +445,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 	static unsigned int anjian_Count=0;
   if (htim == (&htim2))  //1KHZ
   {
-			if(anjianzhi[0]==1){
-			Shang_Yun_Flag=0;
-			}
-			if(anjianzhi[0]==0){
-			Shang_Yun_Flag=1;
-			}
+//			if(anjianzhi[0]==1){
+//			Shang_Yun_Flag=0;
+//			}
+//			if(anjianzhi[0]==0){
+//			Shang_Yun_Flag=1;
+//			}
 		if(Dian_Ji_KaiQi_anjian==1){
 		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
 		}

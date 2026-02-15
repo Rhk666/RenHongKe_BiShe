@@ -13,7 +13,8 @@
 #define ONENET_RETRY_MAX 8  // OneNet连接最大重试次数
 #define WIFI_RETRY_MAX 10  // 最大重试次数，方便修改
 
-#define ESP8266_WIFI_INFO		"AT+CWJAP=\"stm32f407\",\"rgh2742714184\"\r\n"//手机热点wifi的账号和密码
+#define ESP8266_WIFI_INFO		"AT+CWJAP=\"CMCC-RDB\",\"13516303904\"\r\n"//家里的wifi的账号和密码
+//#define ESP8266_WIFI_INFO		"AT+CWJAP=\"stm32f407\",\"rgh2742714184\"\r\n"//手机热点wifi的账号和密码
 //#define ESP8266_WIFI_INFO		"AT+CWJAP=\"NEW_5501-B\",\"elec5501\"\r\n"//实验室wifi的账号和密码
 #define ESP8266_ONENET_INFO		"AT+CIPSTART=\"TCP\",\"mqtts.heclouds.com\",1883\r\n"
 extern unsigned char p3Data,p5Data,p2Data;
