@@ -37,10 +37,9 @@ extern int First_Yaw_flag,Quan_Shu;
 //==========================================================
 void ESP8266_Clear(void)
 {
-
 	memset(esp8266_buf, 0, sizeof(esp8266_buf));
 	esp8266_cnt = 0;
-
+	esp8266_cntPre = 0;  
 }
 
 //==========================================================
@@ -153,7 +152,6 @@ void ESP8266_SendData(unsigned char *data, unsigned short len)
 //==========================================================
 unsigned char *ESP8266_GetIPD(unsigned short timeOut)
 {
-
 	char *ptrIPD = NULL;
 	
 	do

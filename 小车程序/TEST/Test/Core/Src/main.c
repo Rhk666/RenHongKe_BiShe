@@ -128,6 +128,8 @@ unsigned int Shang_Yun_Flag=1,Shang_Yun_Run_Flag=0;
 unsigned int Test_LED_Count = 0,WhilE_Flag=0;
 unsigned int NRF24L01_Send_Error[5];
 
+static uint32_t tick_count = 0;
+static uint32_t last_send_tick = 0; // 记录上次发送的时间点
 
 unsigned int bici = 100;
 /* USER CODE END 0 */
@@ -305,24 +307,41 @@ int main(void)
 		//下面注意控制时间
 		
 		if(Shang_Yun_Flag==1){
+//				if(++TimeCount >= 300)
+//				{
+//					Shang_Yun_Run_Flag=1;
+//					JH_Read_CTdata(CT_data);         //较慢               
+//					c1 = CT_data[0] * 1000 / 1024 / 1024;           
+//					t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
+//					BMP280GetData(&PT, &T, &ALT);
+//					
+//					JsonValue();
+//					OneNet_Publish(devPubTopic, PUBLIS_BUF); //非常慢
+//					ESP8266_Clear();
+//					TimeCount = 0;
+////					Shang_Yun_Run_Flag=2;
+//				}
+//					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
+//				if(dataPtr != NULL)
+//				OneNet_RevPro(dataPtr);	
+////				Shang_Yun_Run_Flag=0;		
+				dataPtr = ESP8266_GetIPD(1); 
+				if(dataPtr != NULL)
+					{
+						OneNet_RevPro(dataPtr);
+						ESP8266_Clear();
+					}			
 				if(++TimeCount >= 300)
 				{
-					Shang_Yun_Run_Flag=1;
 					JH_Read_CTdata(CT_data);         //较慢               
 					c1 = CT_data[0] * 1000 / 1024 / 1024;           
 					t1 = CT_data[1] * 200 * 10 / 1024 / 1024 - 500; 
 					BMP280GetData(&PT, &T, &ALT);
-					
 					JsonValue();
 					OneNet_Publish(devPubTopic, PUBLIS_BUF); //非常慢
 					ESP8266_Clear();
-					TimeCount = 0;
-//					Shang_Yun_Run_Flag=2;
-				}
-					dataPtr = ESP8266_GetIPD(1); //非常慢 但是对上传速度有影响
-				if(dataPtr != NULL)
-				OneNet_RevPro(dataPtr);	
-//				Shang_Yun_Run_Flag=0;					
+					TimeCount = 0;		
+		}
 		}
 		WhilE_Flag=6;
 		    if (NRF24L01_Receive() == 1)
