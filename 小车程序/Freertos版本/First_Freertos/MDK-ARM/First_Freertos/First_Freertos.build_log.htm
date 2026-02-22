@@ -1,0 +1,314 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¶ÃVision V5.40.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 »Œ∫ÈÈ, 1, LIC=14HV2-9KNQN-9UP4U-SG5UQ-VWYZ7-VQ2R9
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.40.0.3
+Toolchain Path:  D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.40.0.3
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      CMSIS_AGDI.dll V1.33.18.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\keil\32project\!!!Freertos_Project\First_Freertos\MDK-ARM\First_Freertos.uvprojx
+Project File Date:  02/20/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin'
+Rebuild target 'First_Freertos'
+assembling startup_stm32f407xx.s...
+compiling stm32f4xx_hal_timebase_tim.c...
+compiling stm32f4xx_hal_msp.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling gpio.c...
+compiling stm32f4xx_hal_flash.c...
+compiling usart.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling tim.c...
+compiling stm32f4xx_it.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling stm32f4xx_hal_rcc.c...
+compiling main.c...
+../Drivers/MY_Task/esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+../Drivers/MY_Task/ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Drivers/MY_Task/typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+../Core/Src/main.c: 3 warnings, 0 errors
+compiling freertos.c...
+../Drivers/MY_Task/esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+../Drivers/MY_Task/ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Drivers/MY_Task/typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+../Core/Src/freertos.c(121): warning:  #177-D: variable "Temp"  was declared but never referenced
+  	uint8_t Temp = Data_Struct.C1;
+../Core/Src/freertos.c(154): warning:  #177-D: variable "TimeCount"  was declared but never referenced
+  	static unsigned int TimeCount,Error_Count;
+../Core/Src/freertos.c(155): warning:  #177-D: variable "tick_count"  was declared but never referenced
+  	 static uint32_t tick_count = 0;
+../Core/Src/freertos.c(225): warning:  #167-D: argument of type "BaseType_t *" is incompatible with parameter of type "TickType_t *const"
+  		vTaskDelayUntil(&preTime,pdMS_TO_TICKS(1000));
+../Core/Src/freertos.c(455): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "TaskFunction_t"
+  	xTaskCreate(ESP8266_Task,"ESP8266_Task",1024,NULL,osPriorityNormal,NULL);
+../Core/Src/freertos.c(456): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "TaskFunction_t"
+  	xTaskCreate(anjian_Task,"anjian_Task",128,NULL,osPriorityNormal,NULL);
+../Core/Src/freertos.c(457): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "TaskFunction_t"
+  	xTaskCreate(IIC_Task,"IIC_Task",512,NULL,osPriorityNormal,NULL);
+../Core/Src/freertos.c(459): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "TaskFunction_t"
+  	xTaskCreate(NRF_Task,"NRF_Task",512,NULL,osPriorityNormal,NULL);
+../Core/Src/freertos.c(460): warning:  #167-D: argument of type "void (*)()" is incompatible with parameter of type "TaskFunction_t"
+  	xTaskCreate(TuoLuoYi_Task,"TuoLuoYi_Task",512,NULL,osPriorityNormal,NULL);
+../Core/Src/freertos.c: 12 warnings, 0 errors
+compiling croutine.c...
+compiling event_groups.c...
+compiling stm32f4xx_hal_tim.c...
+compiling list.c...
+compiling queue.c...
+compiling stream_buffer.c...
+compiling tasks.c...
+compiling timers.c...
+compiling heap_4.c...
+compiling port.c...
+compiling cJSON.c...
+..\Drivers\MY_Task\cJSON.c(55): warning:  #1293-D: assignment in condition
+        if (!(copy = (char*)cJSON_malloc(len))) return 0;
+..\Drivers\MY_Task\cJSON.c(278): warning:  #1293-D: assignment in condition
+  	ptr=str;while ((token=*ptr) && ++len) {if (strchr("\"\\\b\f\n\r\t",token)) len++; else if (token<32) len+=5;ptr++;}
+..\Drivers\MY_Task\cJSON.c(352): warning:  #111-D: statement is unreachable
+  	return p.buffer;
+..\Drivers\MY_Task\cJSON.c(423): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item())) return 0; 	/* memory fail */
+..\Drivers\MY_Task\cJSON.c(535): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item()))	return 0; /* memory fail */
+..\Drivers\MY_Task\cJSON.c: 5 warnings, 0 errors
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_exti.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_uart.c...
+compiling MqttKit.c...
+compiling draw.c...
+..\Drivers\MY_Task\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Drivers\MY_Task\draw.c: 1 warning, 0 errors
+compiling LED.c...
+compiling resources.c...
+..\Drivers\MY_Task\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Drivers\MY_Task\resources.c: 1 warning, 0 errors
+compiling game1.c...
+..\Drivers\MY_Task\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Drivers\MY_Task\game1.c(107): warning:  #186-D: pointless comparison of unsigned integer with zero
+              if(platformXtmp < 0)
+..\Drivers\MY_Task\game1.c(320): warning:  #1-D: last line of file ends without a newline
+  }
+..\Drivers\MY_Task\game1.c(195): warning:  #177-D: variable "platformXtmp"  was declared but never referenced
+  	byte platformXtmp = platformX;
+..\Drivers\MY_Task\game1.c(156): warning:  #177-D: function "btnExit"  was declared but never referenced
+  static bool btnExit()
+..\Drivers\MY_Task\game1.c(163): warning:  #177-D: function "btnRight"  was declared but never referenced
+  static bool btnRight()
+..\Drivers\MY_Task\game1.c(169): warning:  #177-D: function "btnLeft"  was declared but never referenced
+  static bool btnLeft()
+..\Drivers\MY_Task\game1.c(67): warning:  #550-D: variable "lives_origin"  was set but never used
+  static byte lives, lives_origin;
+..\Drivers\MY_Task\game1.c: 8 warnings, 0 errors
+compiling cmsis_os2.c...
+compiling esp8266.c...
+..\Drivers\MY_Task\esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Drivers\MY_Task\esp8266.c(471): warning:  #1-D: last line of file ends without a newline
+  }
+..\Drivers\MY_Task\esp8266.c: 2 warnings, 0 errors
+compiling onenet.c...
+..\Drivers\MY_Task\esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Drivers\MY_Task\onenet.c(69): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i = 0;
+..\Drivers\MY_Task\onenet.c(244): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
+..\Drivers\MY_Task\onenet.c(250): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
+..\Drivers\MY_Task\onenet.c(200): warning:  #177-D: variable "dataPtr"  was declared but never referenced
+  	char *dataPtr = NULL;
+..\Drivers\MY_Task\onenet.c(201): warning:  #177-D: variable "numBuf"  was declared but never referenced
+  	char numBuf[10];
+..\Drivers\MY_Task\onenet.c(202): warning:  #177-D: variable "num"  was declared but never referenced
+  	int num = 0;
+..\Drivers\MY_Task\onenet.c: 7 warnings, 0 errors
+compiling ATH20.c...
+..\Drivers\MY_Task\ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Drivers\MY_Task\ATH20.c(147): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);
+..\Drivers\MY_Task\ATH20.c(159): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,0);  
+..\Drivers\MY_Task\ATH20.c(177): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,1);
+..\Drivers\MY_Task\ATH20.c(183): warning:  #188-D: enumerated type mixed with another type
+   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,0);
+..\Drivers\MY_Task\ATH20.c: 5 warnings, 0 errors
+compiling BMP280.c...
+..\Drivers\MY_Task\BMP280.c(147): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	*asl = BMP280PressureToAltitude(pressure)+152.5;	/*◊™ªª≥…∫£∞Œ*/
+..\Drivers\MY_Task\BMP280.c: 1 warning, 0 errors
+compiling MY_IIC.c...
+..\Drivers\MY_Task\MY_IIC.c(292): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(293): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(305): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(308): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(314): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Drivers\MY_Task\MY_IIC.c(317): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(328): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Drivers\MY_Task\MY_IIC.c(331): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(334): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(340): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Drivers\MY_Task\MY_IIC.c(342): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(344): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(350): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(352): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(354): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(367): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(369): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(381): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;// ±÷” ‰≥ˆ0
+..\Drivers\MY_Task\MY_IIC.c(389): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(393): warning:  #188-D: enumerated type mixed with another type
+              Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(395): warning:  #188-D: enumerated type mixed with another type
+              Soft_I2C_SDA_0;
+..\Drivers\MY_Task\MY_IIC.c(399): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(401): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(411): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(412): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(417): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(424): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(435): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Drivers\MY_Task\MY_IIC.c(436): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c(441): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Drivers\MY_Task\MY_IIC.c(448): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Drivers\MY_Task\MY_IIC.c: 31 warnings, 0 errors
+compiling OLED.c...
+..\Drivers\MY_Task\OLED.c(31): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Drivers\MY_Task\OLED.c(32): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Drivers\MY_Task\OLED.c(43): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Drivers\MY_Task\OLED.c(44): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Drivers\MY_Task\OLED.c(45): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(0);
+..\Drivers\MY_Task\OLED.c(46): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(0);
+..\Drivers\MY_Task\OLED.c(56): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(0);
+..\Drivers\MY_Task\OLED.c(57): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Drivers\MY_Task\OLED.c(58): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Drivers\MY_Task\OLED.c(71): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SDA(Byte & (0x80 >> i));
+..\Drivers\MY_Task\OLED.c(72): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SCL(1);
+..\Drivers\MY_Task\OLED.c(73): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SCL(0);
+..\Drivers\MY_Task\OLED.c(75): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);	//È¢ùÂ§ñÁöÑ‰∏Ä‰∏™Êó∂ÈíüÔºå‰∏çÂ§ÑÁêÜÂ∫îÁ≠î‰ø°Âè?
+..\Drivers\MY_Task\OLED.c(76): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(0);
+..\Drivers\MY_Task\OLED.c(345): warning:  #120-D: return value type does not match the function type
+      return OLED_Buffer;
+..\Drivers\MY_Task\OLED.c(404): warning:  #1-D: last line of file ends without a newline
+  }
+..\Drivers\MY_Task\OLED.c: 16 warnings, 0 errors
+compiling NRF24L01.c...
+..\Drivers\MY_Task\NRF24L01.c(61): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,BitValue);
+..\Drivers\MY_Task\NRF24L01.c(76): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_7,BitValue);
+..\Drivers\MY_Task\NRF24L01.c(91): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,BitValue);
+..\Drivers\MY_Task\NRF24L01.c(106): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,BitValue);
+..\Drivers\MY_Task\NRF24L01.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=38308 RO-data=1468 RW-data=468 ZI-data=22972  
+FromELF: creating hex file...
+"First_Freertos\First_Freertos.axf" - 0 Error(s), 96 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil::STM32F4xx_DFP@2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_First_Freertos
+  D:/keil/MSP/setup/KEIL/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+  D:/keil/MSP/setup/KEIL/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+      Include file:  CMSIS/Core/Include/tz_context.h
+Build Time Elapsed:  00:00:12
+</pre>
+</body>
+</html>
