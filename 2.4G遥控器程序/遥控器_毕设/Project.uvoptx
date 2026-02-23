@@ -263,7 +263,7 @@
         <Ww>
           <count>21</count>
           <WinNumber>1</WinNumber>
-          <ItemText>NRF24L01_TxPacket</ItemText>
+          <ItemText>NRF24L01_TxPacket,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>22</count>

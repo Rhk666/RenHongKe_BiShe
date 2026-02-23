@@ -5,14 +5,7 @@
 
 
 #define CODE0 0xc0
-#define CODE1 0xfc
-
-//typedef struct{
-//	unsigned char R;
-//	unsigned char G;
-//	unsigned char B;
-//}RGB_Color;
-
+#define CODE1 0xf0
 const RGB_Color red={10,0,0};
 const RGB_Color green={0,10,0};
 const RGB_Color blue={0,0,10};
@@ -66,15 +59,36 @@ void SPI_SendOneBit(volatile unsigned char Data){
 		case 0: SPI_I2S_SendData(SPI2,CODE0);  break;
 		default :  SPI_I2S_SendData(SPI2,CODE1);  break;
 	}
+//	while(SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_BSY) == SET);
 
 }
 void Set_Color_On_Array(unsigned char LEDID,RGB_Color color){ //ID从0开始
+//		if(LEDID == 3)
+//	{
+//		All_LED[3*3]   = 0;
+//		All_LED[3*3+1] = 0;
+//		All_LED[3*3+2] = 0;
+//		return; // 直接返回，不执行后面的赋值
+//	}
 	All_LED[LEDID*3]=color.G;
 	All_LED[LEDID*3+1]=color.R;
 	All_LED[LEDID*3+2]=color.B;
 }
-
+void Send_First_LED_Zero(void)
+{
+    // 单独给首灯发G=0、R=0、B=0，24bit纯0，不影响其他灯
+    for(int8_t j=7; j>=0; j--) SPI_SendOneBit(0); // G=0（8bit）
+    for(int8_t j=7; j>=0; j--) SPI_SendOneBit(0); // R=0（8bit）
+    for(int8_t j=7; j>=0; j--) SPI_SendOneBit(0); // B=0（8bit）
+    // 等SPI发送完成，避免时序乱
+    while(SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_BSY) == SET);
+}
 void Send_ALL_LED_Array(){
+	
+		GPIO_WriteBit(GPIOB, GPIO_Pin_15, Bit_RESET);
+//	Delay_us(50); // 100μs低电平，远大于50μs要求，确保可靠复位
+
+	
 	for(unsigned int i=0;i<LED_NUM;i++){
 		
 	for(int j=7;j>=0;j--){

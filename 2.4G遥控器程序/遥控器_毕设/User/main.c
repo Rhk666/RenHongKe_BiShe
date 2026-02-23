@@ -62,7 +62,7 @@ RGB_Color purple0={1,0,1};
 RGB_Color myblack={0,0,0};
 RGB_Color ceshikan1={1,5,15};
 RGB_Color ceshikan2={10,5,1};
-RGB_Color ceshikan3={5,10,1};
+RGB_Color ceshikan3={5,0,1};
 RGB_Color ceshikan4={5,5,5};
 RGB_Color ceshikan5={10,50,150};
 
@@ -78,11 +78,12 @@ int main(void)
 	TIM2_Init();
 	NRF24L01_Init();
 	MySPI_Init();
+	GPIO_WriteBit(GPIOB, GPIO_Pin_15, Bit_RESET);
 	suijishu[0]=(AD_GetVal(ADC_Channel_0)%10+AD_GetVal(ADC_Channel_1)%10+AD_GetVal(ADC_Channel_2)%10+AD_GetVal(ADC_Channel_3)%10);
-	Set_Color_On_Array(0,*ceshikan[3]);
-	Set_Color_On_Array(1,*ceshikan[0]);	
-	Set_Color_On_Array(2,*ceshikan[1]);
-	Set_Color_On_Array(3,*ceshikan[2]);	
+//	Set_Color_On_Array(0,*ceshikan[3]);
+//	Set_Color_On_Array(1,*ceshikan[0]);	
+//	Set_Color_On_Array(2,*ceshikan[1]);
+//	Set_Color_On_Array(3,*ceshikan[2]);	
 		Send_ALL_LED_Array();
 		Delay_us(10);
 	OLED_ShowString(1,1,"Init_OK__Send");
@@ -146,15 +147,16 @@ int main(void)
 			else{              //&1111 1110
 			anjian_state&=0xfe;			
 			}	
-			NRF24L01_TxPacket[0]=yg111;
-			NRF24L01_TxPacket[1]=yg112;
-			NRF24L01_TxPacket[2]=yg121;
-			NRF24L01_TxPacket[3]=yg122;	
-			NRF24L01_TxPacket[4]=yg211;
-			NRF24L01_TxPacket[5]=yg212;
-			NRF24L01_TxPacket[6]=yg221;
-			NRF24L01_TxPacket[7]=yg222;		
-			NRF24L01_TxPacket[8]=anjian_state;	
+			NRF24L01_TxPacket[0]=0x11;  //帧头
+			NRF24L01_TxPacket[1]=yg111;
+			NRF24L01_TxPacket[2]=yg112;
+			NRF24L01_TxPacket[3]=yg121;
+			NRF24L01_TxPacket[4]=yg122;	
+			NRF24L01_TxPacket[5]=yg211;
+			NRF24L01_TxPacket[6]=yg212;
+			NRF24L01_TxPacket[7]=yg221;
+			NRF24L01_TxPacket[8]=yg222;		
+			NRF24L01_TxPacket[9]=anjian_state;	
 			OLED_ShowNum(2,1,ADzhi11,4);
 			OLED_ShowNum(2,6,ADzhi12,4);
 			OLED_ShowNum(3,1,ADzhi22,4);
@@ -172,6 +174,7 @@ int main(void)
 		OLED_ShowString(3,15,".");
 		OLED_ShowNum(3,16,NRF24L01_RxPacket[0]%10,1);
 		runcnt++;
+
 	}
 }
 void TIM2_IRQHandler(void)
@@ -179,21 +182,7 @@ void TIM2_IRQHandler(void)
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
 		mycountLED++;
-//		if(mycountLED%250==0){
-//			if(suiji==1){
-//			suiji=0;
-//		suijishu[suijishuzucount]=ADzhi21%10;
-//			suijishuzucount++;
-//			if(suijishuzucount>=4){
-//			suijishuzucount=0;
-//			}
-//		}
-//		if(ADzhi21!=0){
-//		suiji=1;
-//		}		
-//		mysjs=rand()%2;
-//		}
-		if(mycountLED%5==0){
+				if(mycountLED%5==0){
     // ------------------- ADzhi12控制1、2号灯：0蓝→2000绿→4096红，双灯同色 -------------------
     ceshikan2.B = (4096 - ADzhi12)/128 + 1;  // 0最蓝，4096最暗，RGB≤33
     ceshikan2.G = (2000 - abs(ADzhi12 - 2000))/128 + 1; // 2000最绿，两端渐变暗
@@ -206,24 +195,20 @@ void TIM2_IRQHandler(void)
 //    ceshikan3.B=(ADzhi21/128 + 1)*1;  // ADzhi21主导蓝（/128极低亮度）
 //    ceshikan3.G=(ADzhi22/128 + 1)*1;  // ADzhi22主导绿（/128极低亮度）
 //    ceshikan3.R=(ADzhi11/128 + 1)*1;  // ADzhi11主导红（/128极低亮度）
-//			Set_Color_On_Array(0,*ceshikan[3]);
+			
+    ceshikan4.B=(ADzhi21/128 + 1)*1;  // ADzhi21主导蓝（/128极低亮度）
+    ceshikan4.G=(ADzhi22/128 + 1)*1;  // ADzhi22主导绿（/128极低亮度）
+    ceshikan4.R=(ADzhi12/128 + 1)*1;  // ADzhi11主导红（/128极低亮度）
+			Set_Color_On_Array(0,*ceshikan[3]);
 			Set_Color_On_Array(1,*ceshikan[0]);	
 			Set_Color_On_Array(2,*ceshikan[1]);
 //			Set_Color_On_Array(3,*ceshikan[2]);	
 			Send_ALL_LED_Array();
-		}
+		}		
+		
 			if(mycountLED>=999999){
 			mycountLED=0;
 			}
-//			ceshikan1.B=(suijishu[1]+1)*1;
-//			ceshikan1.G=(suijishu[0]+2)*2;
-//			ceshikan1.R=(suijishu[2]+mysjs)*1;
-//			ceshikan2.B=(suijishu[0]+1)*2;
-//			ceshikan2.G=(suijishu[1]+mysjs)*1;
-//			ceshikan2.R=(suijishu[2]+3)*2;
-//			ceshikan3.B=(suijishu[2]+mysjs)*2;
-//			ceshikan3.G=(suijishu[1]+1)*3;
-//			ceshikan3.R=(suijishu[0]+3)*2;	
 		switch(firstflag){
 			case 1:
 				firstflagcnt++;
@@ -272,11 +257,9 @@ void TIM2_IRQHandler(void)
 			if(down==5){
 			if(ygaj1==0){
 			ygaj1=1;
-					
 			}
 			else{
 			ygaj1=0;
-				
 			}
 			}
 			if(down==6){

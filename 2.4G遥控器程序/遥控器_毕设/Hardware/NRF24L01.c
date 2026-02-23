@@ -289,7 +289,7 @@ void TIM3_Init(){
 
 /*发送部分*/
 uint8_t NRF24L01_TxAddress[5] = {0x22, 0x11, 0x22, 0x11, 0x66};		//发送地址，固定5字节
-#define NRF24L01_TX_PACKET_WIDTH		9							//发送数据包宽度，范围：1~32字节
+#define NRF24L01_TX_PACKET_WIDTH		10							//发送数据包宽度，范围：1~32字节
 uint8_t NRF24L01_TxPacket[NRF24L01_TX_PACKET_WIDTH];				//发送数据包
 
 /*接收部分*/
