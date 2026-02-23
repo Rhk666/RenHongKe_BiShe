@@ -3,20 +3,21 @@
 
 //网络设备驱动
 #include "esp8266.h"
-
 //硬件驱动
 #include "usart.h"
 //C库
 #include <string.h>
 #include <stdio.h>
-
+#include "OLED.h"
 #define ONENET_RETRY_MAX 8  // OneNet连接最大重试次数
 #define WIFI_RETRY_MAX 10  // 最大重试次数，方便修改
+
 
 #define ESP8266_WIFI_INFO		"AT+CWJAP=\"CMCC-RDB\",\"13516303904\"\r\n"//家里的wifi的账号和密码
 //#define ESP8266_WIFI_INFO		"AT+CWJAP=\"stm32f407\",\"rgh2742714184\"\r\n"//手机热点wifi的账号和密码
 //#define ESP8266_WIFI_INFO		"AT+CWJAP=\"NEW_5501-B\",\"elec5501\"\r\n"//实验室wifi的账号和密码
 #define ESP8266_ONENET_INFO		"AT+CIPSTART=\"TCP\",\"mqtts.heclouds.com\",1883\r\n"
+char WiFI_Name[20]="CMCC-RDB";
 extern unsigned char p3Data,p5Data,p2Data;
 unsigned char esp8266_buf[512];
 unsigned short esp8266_cnt = 0, esp8266_cntPre = 0;
@@ -38,7 +39,7 @@ extern int First_Yaw_flag,Quan_Shu;
 //==========================================================
 void ESP8266_Clear(void)
 {
-	memset(esp8266_buf, 0, sizeof(esp8266_buf));
+	memset(esp8266_buf, 0, 100);
 	esp8266_cnt = 0;
 	esp8266_cntPre = 0;  
 }
@@ -111,7 +112,32 @@ _Bool ESP8266_SendCmd(char *cmd, char *res)
 	return 1;
 
 }
+_Bool ESP8266_Init_SendCmd(char *cmd, char *res)
+{
+	
+	unsigned char timeOut = 90;
+	HAL_UART_Transmit(&huart3,(unsigned char *)cmd,strlen((const char *)cmd),10);
+//	return 1;
+//	Usart_SendString(USART2, (unsigned char *)cmd, strlen((const char *)cmd));
+	
+	while(timeOut--)
+	{
+		if(ESP8266_WaitRecive() == REV_OK)							//如果收到数据
+		{
+			if(strstr((const char *)esp8266_buf, res) != NULL)		//如果检索到关键词
+			{
+				ESP8266_Clear();									//清空缓存
+				
+				return 0;
+			}
+		}
+		
+		HAL_Delay(15);
+	}
+	
+	return 1;
 
+}
 //==========================================================
 //	函数名称：	ESP8266_SendData
 //
@@ -204,17 +230,20 @@ void ESP8266_ConnectWiFi(void)
     _Bool wifi_connect_status = 0;  // WiFi连接状态：0=失败，1=成功
 
     printf("开始连接WiFi，最大重试%d次...\r\n", WIFI_RETRY_MAX);
-
+		OLED_ShowString(2,1,"Connect_MAX:");
+		OLED_ShowNum(2,13,WIFI_RETRY_MAX,2);
     // 循环重试WiFi连接，直到成功 或 达到最大重试次数
     while(retry_count < WIFI_RETRY_MAX)
     {
         // 执行WiFi连接指令，判断是否收到"GOT IP"（成功标识）
         // ESP8266_SendCmd返回值：1=成功（收到GOT IP），0=失败
-        if(ESP8266_SendCmd(ESP8266_WIFI_INFO, "GOT IP")==0)
+        if(ESP8266_Init_SendCmd(ESP8266_WIFI_INFO, "GOT IP")==0)
         {
             // 连接成功，标记状态并跳出循环
             wifi_connect_status = 1;
             printf("WiFi连接成功！（重试次数：%d）\r\n", retry_count + 1);
+					OLED_ShowString(3,1,"WiFi_Connect_OK");
+//					OLED_ShowNum(3,16,(retry_count + 1),1);
 					WiFi_Success_Flag=1;
             break;
         }
@@ -223,7 +252,8 @@ void ESP8266_ConnectWiFi(void)
             // 连接失败，计数器+1
             retry_count++;
             printf("WiFi连接失败，剩余重试次数：%d\r\n", WIFI_RETRY_MAX - retry_count);
-            
+					OLED_ShowString(3,1,"Connecting...:");
+					OLED_ShowNum(3,15,(retry_count),1);
             // 失败后延时500ms再重试（避免频繁发送指令）
             HAL_Delay(100);  // 替换为你平台的延时函数，如HAL_Delay(500)
         }
@@ -233,6 +263,8 @@ void ESP8266_ConnectWiFi(void)
     if(!wifi_connect_status)
     {
         printf("错误：WiFi连接重试%d次均失败，已退出重试！\r\n", WIFI_RETRY_MAX);
+				OLED_ShowString(4,5,"Connect_Error");
+
     }
 }
 void ESP8266_ConnectOneNet(void)
@@ -247,10 +279,11 @@ void ESP8266_ConnectOneNet(void)
     {
         // 执行OneNet连接指令，判断是否收到"CONNECT"成功标识
         // ESP8266_SendCmd返回值：1=成功（收到CONNECT），0=失败
-        if(ESP8266_SendCmd(ESP8266_ONENET_INFO, "CONNECT")==0)
+        if(ESP8266_Init_SendCmd(ESP8266_ONENET_INFO, "CONNECT")==0)
         {
             // 连接成功，标记状态并跳出循环
             onenet_connect_status = 1;
+						OLED_ShowString(4,5,"OneNET_OK");
             printf("OneNet服务器连接成功！（重试次数：%d）\r\n", retry_count + 1);
             break;
         }
@@ -268,6 +301,7 @@ void ESP8266_ConnectOneNet(void)
     // 循环结束后判断最终状态
     if(!onenet_connect_status)
     {
+				OLED_ShowString(4,5,"OneNET_Error");
         printf("错误：OneNet服务器连接重试%d次均失败，已退出重试！\r\n", ONENET_RETRY_MAX);
     }
 }
@@ -275,6 +309,8 @@ void ESP8266_Init(void)
 {
 		
 		ESP8266_Clear();
+		OLED_ShowString(1,1,"WiFI:");
+		OLED_ShowString(1,6,WiFI_Name);
 		printf("1. AT\r\n");
 //		printf("1. AT\r\n");
 		while(ESP8266_SendCmd("AT\r\n", "OK"))
@@ -333,7 +369,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if (huart == &huart3) //esp8266
 	{
 		HAL_UART_Receive_IT(&huart3, &p3Data, 1);
-	if(esp8266_cnt >= sizeof(esp8266_buf))	esp8266_cnt = 0; //防止串口被刷爆
+	if(esp8266_cnt >= sizeof(esp8266_buf)-1)	esp8266_cnt = 0; //防止串口被刷爆
 		esp8266_buf[esp8266_cnt++] = p3Data;
 //		printf("%c", p3Data);
 	}
@@ -344,9 +380,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if (huart == &huart2) //陀螺仪
 	{
 		HAL_UART_Receive_IT(&huart2, &p2Data, 1);
-//		if(anjianzhi[0]==1){
-//		printf("%d\r\n",p2Data);
-//		}
 		
 		Temp_Data = p2Data;
 		if (Rxstate == 0)
@@ -382,7 +415,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		}
 //		printf("%c", p5Data);
 	}	
-	
 }
 unsigned int Usart_Error_count=0;
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
@@ -394,10 +426,6 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart) {
         HAL_UART_Receive_IT(&huart2, &p2Data, 1);
     }
 }
-
-
-
-
 
 char RX_Re_Data()
 {

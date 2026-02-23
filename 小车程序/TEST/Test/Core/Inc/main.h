@@ -59,6 +59,8 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
+void Game_Vri_Init(void);
+void game1_draw(void);
 
 /* USER CODE END Private defines */
 

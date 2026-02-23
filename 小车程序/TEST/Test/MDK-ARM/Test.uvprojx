@@ -81,7 +81,7 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>0</RunUserProg1>
-            <RunUserProg2>0</RunUserProg2>
+            <RunUserProg2>1</RunUserProg2>
             <UserProg1Name></UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
@@ -615,6 +615,36 @@
               <FileName>stm32f4xx_hal_msp.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/stm32f4xx_hal_msp.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\OLED.c</FilePath>
+            </File>
+            <File>
+              <FileName>OLED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Src\OLED.h</FilePath>
+            </File>
+            <File>
+              <FileName>OLED_Font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Src\OLED_Font.h</FilePath>
+            </File>
+            <File>
+              <FileName>draw.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\draw.c</FilePath>
+            </File>
+            <File>
+              <FileName>game1.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\game1.c</FilePath>
+            </File>
+            <File>
+              <FileName>resources.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\resources.c</FilePath>
             </File>
           </Files>
         </Group>

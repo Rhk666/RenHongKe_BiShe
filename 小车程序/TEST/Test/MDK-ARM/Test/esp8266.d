@@ -35,3 +35,4 @@ test\esp8266.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 test\esp8266.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 test\esp8266.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\string.h
 test\esp8266.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdio.h
+test\esp8266.o: ..\Core\Src\OLED.h

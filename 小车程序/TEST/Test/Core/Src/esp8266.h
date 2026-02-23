@@ -14,6 +14,7 @@ void ESP8266_Init(void);
 void ESP8266_Clear(void);
 
 _Bool ESP8266_SendCmd(char *cmd, char *res);
+_Bool ESP8266_Init_SendCmd(char *cmd, char *res);
 
 void ESP8266_SendData(unsigned char *data, unsigned short len);
 

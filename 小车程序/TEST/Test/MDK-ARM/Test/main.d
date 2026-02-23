@@ -44,3 +44,4 @@ test\main.o: ../Core/Src/esp8266.h
 test\main.o: ../Core/Src/onenet.h
 test\main.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
 test\main.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\math.h
+test\main.o: ../Core/Src/OLED.h
