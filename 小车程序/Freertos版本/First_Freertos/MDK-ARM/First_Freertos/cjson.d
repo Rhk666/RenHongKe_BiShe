@@ -1,0 +1,9 @@
+first_freertos\cjson.o: ..\Drivers\MY_Task\cJSON.c
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\string.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdio.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\math.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\float.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\limits.h
+first_freertos\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\ctype.h
+first_freertos\cjson.o: ..\Drivers\MY_Task\cJSON.h

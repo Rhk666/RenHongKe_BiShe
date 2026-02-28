@@ -1,0 +1,328 @@
+<html>
+<body>
+<pre>
+<h1>�Vision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ��Vision V5.40.0.0
+Copyright (C) 2024 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 �κ���, 1, LIC=14HV2-9KNQN-9UP4U-SG5UQ-VWYZ7-VQ2R9
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.40.0.3
+Toolchain Path:  D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 6 (build 750)
+Assembler:       Armasm.exe V5.06 update 6 (build 750)
+Linker/Locator:  ArmLink.exe V5.06 update 6 (build 750)
+Library Manager: ArmAr.exe V5.06 update 6 (build 750)
+Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
+CPU DLL:         SARMCM3.DLL V5.40.0.3
+Dialog DLL:      DCM.DLL V1.17.5.0
+Target DLL:      CMSIS_AGDI.dll V1.33.18.0
+Dialog DLL:      TCM.DLL V1.56.4.0
+ 
+<h2>Project:</h2>
+D:\keil\32project\AAA_MY_BiShe\TEST\Test\MDK-ARM\Test.uvprojx
+Project File Date:  02/21/2026
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 6 (build 750)', folder: 'D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin'
+Rebuild target 'Test'
+assembling startup_stm32f407xx.s...
+compiling cJSON.c...
+..\Core\Src\cJSON.c(55): warning:  #1293-D: assignment in condition
+        if (!(copy = (char*)cJSON_malloc(len))) return 0;
+..\Core\Src\cJSON.c(278): warning:  #1293-D: assignment in condition
+  	ptr=str;while ((token=*ptr) && ++len) {if (strchr("\"\\\b\f\n\r\t",token)) len++; else if (token<32) len+=5;ptr++;}
+..\Core\Src\cJSON.c(352): warning:  #111-D: statement is unreachable
+  	return p.buffer;
+..\Core\Src\cJSON.c(423): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item())) return 0; 	/* memory fail */
+..\Core\Src\cJSON.c(535): warning:  #1293-D: assignment in condition
+  		if (!(new_item=cJSON_New_Item()))	return 0; /* memory fail */
+..\Core\Src\cJSON.c: 5 warnings, 0 errors
+compiling MqttKit.c...
+compiling stm32f4xx_hal_msp.c...
+compiling tim.c...
+compiling NRF24L01.c...
+..\Core\Src\NRF24L01.c(61): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_6,BitValue);
+..\Core\Src\NRF24L01.c(76): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_7,BitValue);
+..\Core\Src\NRF24L01.c(91): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,BitValue);
+..\Core\Src\NRF24L01.c(106): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_5,BitValue);
+..\Core\Src\NRF24L01.c: 4 warnings, 0 errors
+compiling BMP280.c...
+..\Core\Src\BMP280.c(147): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  	*asl = BMP280PressureToAltitude(pressure)+152.5;	/*ת���ɺ���*/
+..\Core\Src\BMP280.c: 1 warning, 0 errors
+compiling esp8266.c...
+..\Core\Src\esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Core\Src\esp8266.c(451): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\esp8266.c: 2 warnings, 0 errors
+compiling usart.c...
+compiling gpio.c...
+compiling draw.c...
+..\Core\Src\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Core\Src\draw.c: 1 warning, 0 errors
+compiling MY_IIC.c...
+..\Core\Src\MY_IIC.c(292): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(293): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(305): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(308): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(314): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Core\Src\MY_IIC.c(317): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(328): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Core\Src\MY_IIC.c(331): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(334): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(340): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_0;
+..\Core\Src\MY_IIC.c(342): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(344): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(350): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(352): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(354): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(367): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(369): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(381): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;//ʱ�����0
+..\Core\Src\MY_IIC.c(389): warning:  #188-D: enumerated type mixed with another type
+  	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(393): warning:  #188-D: enumerated type mixed with another type
+              Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(395): warning:  #188-D: enumerated type mixed with another type
+              Soft_I2C_SDA_0;
+..\Core\Src\MY_IIC.c(399): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(401): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(411): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(412): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(417): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(424): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(435): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SDA_1;
+..\Core\Src\MY_IIC.c(436): warning:  #188-D: enumerated type mixed with another type
+   	Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c(441): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_1;
+..\Core\Src\MY_IIC.c(448): warning:  #188-D: enumerated type mixed with another type
+    		Soft_I2C_SCL_0;
+..\Core\Src\MY_IIC.c: 31 warnings, 0 errors
+compiling OLED.c...
+..\Core\Src\OLED.c(30): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Core\Src\OLED.c(31): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Core\Src\OLED.c(42): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Core\Src\OLED.c(43): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Core\Src\OLED.c(44): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(0);
+..\Core\Src\OLED.c(45): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(0);
+..\Core\Src\OLED.c(55): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(0);
+..\Core\Src\OLED.c(56): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);
+..\Core\Src\OLED.c(57): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SDA(1);
+..\Core\Src\OLED.c(70): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SDA(Byte & (0x80 >> i));
+..\Core\Src\OLED.c(71): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SCL(1);
+..\Core\Src\OLED.c(72): warning:  #188-D: enumerated type mixed with another type
+  		OLED_W_SCL(0);
+..\Core\Src\OLED.c(74): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(1);	//额外的一个时钟，不处理应答信�?
+..\Core\Src\OLED.c(75): warning:  #188-D: enumerated type mixed with another type
+  	OLED_W_SCL(0);
+..\Core\Src\OLED.c(344): warning:  #120-D: return value type does not match the function type
+      return OLED_Buffer;
+..\Core\Src\OLED.c(403): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\OLED.c: 16 warnings, 0 errors
+compiling stm32f4xx_it.c...
+compiling ATH20.c...
+..\Core\Src\ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Core\Src\ATH20.c(147): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,1);
+..\Core\Src\ATH20.c(159): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_9,0);  
+..\Core\Src\ATH20.c(177): warning:  #188-D: enumerated type mixed with another type
+  	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,1);
+..\Core\Src\ATH20.c(183): warning:  #188-D: enumerated type mixed with another type
+   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_8,0);
+..\Core\Src\ATH20.c: 5 warnings, 0 errors
+compiling onenet.c...
+..\Core\Src\esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+..\Core\Src\onenet.c(69): warning:  #177-D: variable "i"  was declared but never referenced
+  	int i = 0;
+..\Core\Src\onenet.c(244): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
+..\Core\Src\onenet.c(250): warning:  #188-D: enumerated type mixed with another type
+  						HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
+..\Core\Src\onenet.c(200): warning:  #177-D: variable "dataPtr"  was declared but never referenced
+  	char *dataPtr = NULL;
+..\Core\Src\onenet.c(201): warning:  #177-D: variable "numBuf"  was declared but never referenced
+  	char numBuf[10];
+..\Core\Src\onenet.c(202): warning:  #177-D: variable "num"  was declared but never referenced
+  	int num = 0;
+..\Core\Src\onenet.c: 7 warnings, 0 errors
+compiling resources.c...
+..\Core\Src\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Core\Src\resources.c: 1 warning, 0 errors
+compiling main.c...
+../Core/Src/ath20.h(22): warning:  #1-D: last line of file ends without a newline
+  #endif
+../Core/Src/esp8266.h(22): warning:  #1295-D: Deprecated declaration RX_Re_Data - give arg types
+  char RX_Re_Data();
+../Core/Src/main.c(163): warning:  #1295-D: Deprecated declaration anjianlx - give arg types
+  void anjianlx();
+../Core/Src/main.c(164): warning:  #1295-D: Deprecated declaration MY_SCAN - give arg types
+  void MY_SCAN();
+../Core/Src/main.c(170): warning:  #1295-D: Deprecated declaration JsonValue - give arg types
+  void JsonValue();
+../Core/Src/main.c(527): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,0);
+../Core/Src/main.c(530): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_8,1);
+../Core/Src/main.c(556): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,0);
+../Core/Src/main.c(559): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,1);
+../Core/Src/main.c(562): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,0);
+../Core/Src/main.c(565): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,1);
+../Core/Src/main.c(569): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_9,0);
+../Core/Src/main.c(570): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOD,GPIO_PIN_11,0);	
+../Core/Src/main.c(620): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,PWM_Debug_Dier_1);		
+../Core/Src/main.c(621): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,PWM_Debug_Dier_2);				
+../Core/Src/main.c(628): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);
+../Core/Src/main.c(631): warning:  #188-D: enumerated type mixed with another type
+  			HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);
+../Core/Src/main.c(636): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,PWM_Debug_Dier_1);		
+../Core/Src/main.c(637): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,PWM_Debug_Dier_2);				
+../Core/Src/main.c(649): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
+../Core/Src/main.c(650): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
+../Core/Src/main.c(653): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,1);		
+../Core/Src/main.c(654): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);		
+../Core/Src/main.c(660): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,0);		
+../Core/Src/main.c(661): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,0);	
+../Core/Src/main.c(664): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOE,GPIO_PIN_10,1);		
+../Core/Src/main.c(665): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,1);	
+../Core/Src/main.c(989): warning:  #223-D: function "memset" declared implicitly
+  	memset(PUBLIS_BUF, 0, sizeof(PUBLIS_BUF));
+../Core/Src/main.c(981): warning:  #177-D: variable "Temp"  was declared but never referenced
+  	uint8_t Temp = c1;
+../Core/Src/main.c(146): warning:  #177-D: variable "tick_count"  was declared but never referenced
+  static uint32_t tick_count = 0;              // 恢复：原程序定义（编译需要）
+../Core/Src/main.c(147): warning:  #177-D: variable "last_send_tick"  was declared but never referenced
+  static uint32_t last_send_tick = 0;          // 恢复：原程序定义（编译需要）
+../Core/Src/main.c(151): warning:  #177-D: variable "anjian_Count"  was declared but never referenced
+  static unsigned int anjian_Count=0;          // 灯光闪烁计数（用到）
+../Core/Src/main.c: 32 warnings, 0 errors
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal_flash.c...
+compiling game1.c...
+..\Core\Src\typedefs.h(24): warning:  #65-D: expected a ";"
+  };
+..\Core\Src\game1.c(213): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\game1.c(74): warning:  #177-D: variable "platformXtmp"  was declared but never referenced
+  	byte platformXtmp = platformX;
+..\Core\Src\game1.c(48): warning:  #550-D: variable "uptMove"  was set but never used
+  static byte uptMove;
+..\Core\Src\game1.c(51): warning:  #550-D: variable "g_framebuffer"  was set but never used
+  static uint8_t *g_framebuffer;
+..\Core\Src\game1.c: 5 warnings, 0 errors
+compiling stm32f4xx_hal_rcc.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling stm32f4xx_hal_tim.c...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_exti.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal_uart.c...
+linking...
+Program Size: Code=35948 RO-data=2944 RW-data=428 ZI-data=43572  
+FromELF: creating hex file...
+"Test\Test.axf" - 0 Error(s), 110 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                https://www.keil.com/pack/ARM.CMSIS.6.1.0.pack
+                ARM::CMSIS@6.1.0
+                CMSIS (Common Microcontroller Software Interface Standard)
+   * Component: CORE Version: 6.1.0
+
+Package Vendor: Keil
+                https://www.keil.com/pack/Keil.STM32F4xx_DFP.2.17.1.pack
+                Keil::STM32F4xx_DFP@2.17.1
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  ./RTE/_Test
+  D:/keil/MSP/setup/KEIL/ARM/CMSIS/6.1.0/CMSIS/Core/Include
+  D:/keil/MSP/setup/KEIL/Keil/STM32F4xx_DFP/2.17.1/Drivers/CMSIS/Device/ST/STM32F4xx/Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE@6.1.0
+      Include file:  CMSIS/Core/Include/tz_context.h
+Build Time Elapsed:  00:00:11
+</pre>
+</body>
+</html>

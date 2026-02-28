@@ -1,0 +1,9 @@
+test\cjson.o: ..\Core\Src\cJSON.c
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\string.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdio.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\math.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\stdlib.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\float.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\limits.h
+test\cjson.o: D:\keil\MSP\setup\KEIL\ARM\ARMCC\Bin\..\include\ctype.h
+test\cjson.o: ..\Core\Src\cJSON.h
